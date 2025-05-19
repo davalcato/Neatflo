@@ -11,68 +11,97 @@ struct OnboardingView: View {
     @Binding var hasSeenOnboarding: Bool
     @State private var currentPage = 0
     
-    private let onboardingData: [(image: String, title: String, description: String)] = [
-        ("neatflo_logo", "Welcome to Neatflo", "Your smart networking companion for managing and growing professional relationships."),
-        ("connection_icon", "Connect Intelligently", "Find new contacts and sync them with insights that help build lasting value."),
-        ("insight_icon", "Gain Insights", "Understand your network with intelligent summaries and actionable data."),
-        ("goal_icon", "Achieve Goals", "Set networking goals and let Neatflo guide your journey step-by-step.")
+    private let onboardingSteps = [
+        OnboardingStep(image: "neatflo_logo", title: "Welcome to Neatflo", description: "Your AI-powered networking assistant for smarter, faster connections."),
+        OnboardingStep(image: "connection_icon", title: "Smart Connections", description: "Neatflo intelligently organizes your contacts and helps you grow your network."),
+        OnboardingStep(image: "insight_icon", title: "Insights That Matter", description: "Visualize your relationship health, activity, and communication patterns."),
+        OnboardingStep(image: "goal_icon", title: "Achieve with Purpose", description: "Set connection goals and let Neatflo track and guide your success.")
     ]
     
     var body: some View {
-        VStack {
-            TabView(selection: $currentPage) {
-                ForEach(0..<onboardingData.count, id: \.self) { index in
-                    VStack(spacing: 20) {
-                        Spacer()
-                        Image(onboardingData[index].image)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 140, height: 140)
-                            .padding(.top, 40)
-
-                        Text(onboardingData[index].title)
-                            .font(.title)
-                            .fontWeight(.semibold)
-
-                        Text(onboardingData[index].description)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.secondary)
-                            .padding(.horizontal, 24)
-                        
-                        Spacer()
+        ZStack {
+            LinearGradient(colors: [Color.indigo, Color.purple, Color.black], startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+            VStack {
+                TabView(selection: $currentPage) {
+                    ForEach(0..<onboardingSteps.count, id: \.self) { index in
+                        OnboardingCardView(step: onboardingSteps[index])
+                            .tag(index)
+                            .padding(.horizontal)
+                            .transition(.slide)
                     }
-                    .tag(index)
                 }
-            }
-            .tabViewStyle(PageTabViewStyle())
-            .animation(.easeInOut, value: currentPage)
-
-            Button(action: {
-                if currentPage < onboardingData.count - 1 {
-                    currentPage += 1
-                } else {
-                    UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
-                    hasSeenOnboarding = true
+                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .animation(.easeInOut, value: currentPage)
+                
+                Spacer()
+                
+                Button(action: {
+                    if currentPage < onboardingSteps.count - 1 {
+                        withAnimation {
+                            currentPage += 1
+                        }
+                    } else {
+                        UserDefaults.standard.set(true, forKey: "hasSeenOnboarding")
+                        hasSeenOnboarding = true
+                    }
+                }) {
+                    Text(currentPage < onboardingSteps.count - 1 ? "Next" : "Start Networking")
+                        .font(.headline)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(.ultraThinMaterial)
+                        .foregroundColor(.white)
+                        .cornerRadius(16)
+                        .padding(.horizontal, 32)
+                        .shadow(radius: 10)
                 }
-            }) {
-                Text(currentPage < onboardingData.count - 1 ? "Next" : "Get Started")
-                    .font(.headline)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.accentColor)
-                    .foregroundColor(.white)
-                    .cornerRadius(12)
-                    .padding(.horizontal, 32)
-                    .padding(.bottom, 20)
+                .padding(.bottom, 40)
             }
         }
-        .background(Color(.systemBackground).ignoresSafeArea())
     }
 }
 
-#Preview {
-    OnboardingView(hasSeenOnboarding: .constant(false))
+struct OnboardingStep {
+    let image: String
+    let title: String
+    let description: String
+}
+
+struct OnboardingCardView: View {
+    let step: OnboardingStep
+    
+    var body: some View {
+        VStack(spacing: 20) {
+            Spacer()
+            
+            Image(step.image)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 140, height: 140)
+                .shadow(radius: 10)
+                .padding(.bottom, 10)
+            
+            Text(step.title)
+                .font(.largeTitle.bold())
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white)
+                .padding(.horizontal)
+            
+            Text(step.description)
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .foregroundColor(.white.opacity(0.85))
+                .padding(.horizontal, 30)
+            
+            Spacer()
+        }
+        .padding()
+        .background(.ultraThinMaterial)
+        .cornerRadius(30)
+        .shadow(color: .black.opacity(0.2), radius: 12, x: 0, y: 5)
+    }
 }
 
 
