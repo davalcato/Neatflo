@@ -23,6 +23,8 @@
 		DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */; };
 		DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45254D2DBDAEA3001AFE0D /* AppState.swift */; };
 		DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525562DBDAEA3001AFE0D /* FeedView.swift */; };
+		DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */; };
+		DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */; };
 		DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */; };
 		DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897C2DD123A900EE5B88 /* ContentView.swift */; };
 		DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */; };
@@ -75,6 +77,8 @@
 		DA4525542DBDAEA3001AFE0D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DA4525562DBDAEA3001AFE0D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		DA4525582DBDAEA3001AFE0D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
+		DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageModifier.swift; sourceTree = "<group>"; };
 		DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityMO.swift; sourceTree = "<group>"; };
 		DA7D897C2DD123A900EE5B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeatfloApp.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				DA45254D2DBDAEA3001AFE0D /* AppState.swift */,
 				DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */,
 				DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */,
+				DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */,
 				DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */,
 			);
 			path = Models;
@@ -234,7 +239,6 @@
 				DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */,
 				DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */,
 				DA10C48C2DC71A07009BFBF8 /* OpportunitiesViewModel.swift */,
-				DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -250,19 +254,21 @@
 		DA4525572DBDAEA3001AFE0D /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */,
 				DA4525562DBDAEA3001AFE0D /* FeedView.swift */,
 				DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
 		};
-		DA4525592DBDAEA3001AFE0D /* Splash */ = {
+		DA4525592DBDAEA3001AFE0D /* Shared */ = {
 			isa = PBXGroup;
 			children = (
 				DA4525582DBDAEA3001AFE0D /* SplashView.swift */,
 				DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */,
+				DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */,
 			);
-			path = Splash;
+			path = Shared;
 			sourceTree = "<group>";
 		};
 		DA45255A2DBDAEA3001AFE0D /* Views */ = {
@@ -270,7 +276,7 @@
 			children = (
 				DA4525552DBDAEA3001AFE0D /* Auth */,
 				DA4525572DBDAEA3001AFE0D /* Main */,
-				DA4525592DBDAEA3001AFE0D /* Splash */,
+				DA4525592DBDAEA3001AFE0D /* Shared */,
 				DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */,
 				DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */,
 				DA7D897C2DD123A900EE5B88 /* ContentView.swift */,
@@ -447,6 +453,8 @@
 				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,
 				DA10C48D2DC71A07009BFBF8 /* OpportunitiesViewModel.swift in Sources */,
 				DA45255E2DBDAEA3001AFE0D /* AuthViewModel.swift in Sources */,
+				DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */,
+				DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */,
 				DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */,
 				DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */,
 				DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */,
