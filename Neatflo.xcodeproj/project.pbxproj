@@ -3,8 +3,37 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		284B4F4941BE55B51798BA85 /* Pods_Neatflo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 184062A23183B9A8D089D05A /* Pods_Neatflo.framework */; };
+		DA0415AA2DBF2ED900607BEB /* NeatfloDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415A92DBF2ED900607BEB /* NeatfloDataManager.swift */; };
+		DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */; };
+		DA0415AF2DBF4CC600607BEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */; };
+		DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */; };
+		DA10C48D2DC71A07009BFBF8 /* OpportunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA10C48C2DC71A07009BFBF8 /* OpportunitiesViewModel.swift */; };
+		DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3CD4AB2DC711810033EF02 /* DataService.swift */; };
+		DA3CD4AE2DC7126C0033EF02 /* OpportunityFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */; };
+		DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E93482DC86DE5004BA2BB /* MockDataService.swift */; };
+		DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525582DBDAEA3001AFE0D /* SplashView.swift */; };
+		DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45254F2DBDAEA3001AFE0D /* AuthService.swift */; };
+		DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525542DBDAEA3001AFE0D /* LoginView.swift */; };
+		DA45255E2DBDAEA3001AFE0D /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525512DBDAEA3001AFE0D /* AuthViewModel.swift */; };
+		DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */; };
+		DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45254D2DBDAEA3001AFE0D /* AppState.swift */; };
+		DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525562DBDAEA3001AFE0D /* FeedView.swift */; };
+		DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */; };
+		DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897C2DD123A900EE5B88 /* ContentView.swift */; };
+		DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */; };
+		DA80C8BD2DCFCDBB00B879C2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80C8BC2DCFCDBB00B879C2 /* PersistenceController.swift */; };
+		DAA5059B2DDAB51300D80412 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */; };
+		DAA5A6DB2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DA2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift */; };
+		DAA5A6DD2DBDB82000AD57E4 /* FirestoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DC2DBDB82000AD57E4 /* FirestoreService.swift */; };
+		DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */; };
+		DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */; };
+		DAAC15862DC2B7D40096E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAC15852DC2B7D40096E81E /* Assets.xcassets */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		DA4525152DBD910E001AFE0D /* PBXContainerItemProxy */ = {
@@ -24,34 +53,52 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		184062A23183B9A8D089D05A /* Pods_Neatflo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Neatflo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842D2D3478D68A149DE1672C /* Pods-Neatflo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neatflo.debug.xcconfig"; path = "Target Support Files/Pods-Neatflo/Pods-Neatflo.debug.xcconfig"; sourceTree = "<group>"; };
+		997D5B6277023DA8AF9A99F5 /* Pods-Neatflo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Neatflo.release.xcconfig"; path = "Target Support Files/Pods-Neatflo/Pods-Neatflo.release.xcconfig"; sourceTree = "<group>"; };
+		DA0415A92DBF2ED900607BEB /* NeatfloDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeatfloDataManager.swift; sourceTree = "<group>"; };
+		DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityListView.swift; sourceTree = "<group>"; };
+		DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DA10C48C2DC71A07009BFBF8 /* OpportunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesViewModel.swift; sourceTree = "<group>"; };
+		DA3CD4AB2DC711810033EF02 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityFeedView.swift; sourceTree = "<group>"; };
+		DA3E93482DC86DE5004BA2BB /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		DA4525032DBD910C001AFE0D /* Neatflo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neatflo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4525142DBD910E001AFE0D /* NeatfloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeatfloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA45251E2DBD910E001AFE0D /* NeatfloUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeatfloUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA45254D2DBDAEA3001AFE0D /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		DA45254F2DBDAEA3001AFE0D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		DA4525512DBDAEA3001AFE0D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		DA4525542DBDAEA3001AFE0D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		DA4525562DBDAEA3001AFE0D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
+		DA4525582DBDAEA3001AFE0D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityMO.swift; sourceTree = "<group>"; };
+		DA7D897C2DD123A900EE5B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeatfloApp.swift; sourceTree = "<group>"; };
+		DA80C8BC2DCFCDBB00B879C2 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		DA90581E2DC5D4BB00C1A19C /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DA9749352DC1DC1300AB3EE3 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		DAA5A6DA2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreServiceProtocol.swift; sourceTree = "<group>"; };
+		DAA5A6DC2DBDB82000AD57E4 /* FirestoreService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirestoreService.swift; sourceTree = "<group>"; };
+		DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Opportunity.swift; sourceTree = "<group>"; };
+		DAAC15852DC2B7D40096E81E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		DAAC15872DC2B9870096E81E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAAC15892DC2B9EE0096E81E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAAC158D2DC2D4660096E81E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
+		DAAC158E2DC2D4660096E81E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAB3D88E2DC6DCF600EBF26C /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		DA4525052DBD910C001AFE0D /* Neatflo */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Neatflo;
-			sourceTree = "<group>";
-		};
-		DA4525172DBD910E001AFE0D /* NeatfloTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NeatfloTests;
-			sourceTree = "<group>";
-		};
-		DA4525212DBD910E001AFE0D /* NeatfloUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = NeatfloUITests;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DA4525002DBD910C001AFE0D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				284B4F4941BE55B51798BA85 /* Pods_Neatflo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,13 +119,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		118C33B9BC9D35CA096416BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DAB3D88E2DC6DCF600EBF26C /* FirebaseAuth.framework */,
+				DA90581E2DC5D4BB00C1A19C /* FirebaseFirestore.framework */,
+				DAAC158D2DC2D4660096E81E /* FirebaseAnalytics.xcframework */,
+				DAAC158E2DC2D4660096E81E /* FirebaseAuth.framework */,
+				DAAC15892DC2B9EE0096E81E /* FirebaseFirestore.framework */,
+				DAAC15872DC2B9870096E81E /* FirebaseFirestore.framework */,
+				DA9749352DC1DC1300AB3EE3 /* FirebaseFirestore.framework */,
+				184062A23183B9A8D089D05A /* Pods_Neatflo.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4862C0AAE82C41F57DBD2146 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				842D2D3478D68A149DE1672C /* Pods-Neatflo.debug.xcconfig */,
+				997D5B6277023DA8AF9A99F5 /* Pods-Neatflo.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		DA4524FA2DBD910C001AFE0D = {
 			isa = PBXGroup;
 			children = (
+				DA45254E2DBDAEA3001AFE0D /* Models */,
+				DA4525502DBDAEA3001AFE0D /* Services */,
+				DA4525532DBDAEA3001AFE0D /* ViewModel */,
+				DA45255A2DBDAEA3001AFE0D /* Views */,
 				DA4525052DBD910C001AFE0D /* Neatflo */,
+				DA4525342DBD968F001AFE0D /* Preview Content */,
 				DA4525172DBD910E001AFE0D /* NeatfloTests */,
 				DA4525212DBD910E001AFE0D /* NeatfloUITests */,
 				DA4525042DBD910C001AFE0D /* Products */,
+				4862C0AAE82C41F57DBD2146 /* Pods */,
+				118C33B9BC9D35CA096416BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +170,111 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		DA4525052DBD910C001AFE0D /* Neatflo */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Neatflo;
+			sourceTree = "<group>";
+		};
+		DA4525172DBD910E001AFE0D /* NeatfloTests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NeatfloTests;
+			sourceTree = "<group>";
+		};
+		DA4525212DBD910E001AFE0D /* NeatfloUITests */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NeatfloUITests;
+			sourceTree = "<group>";
+		};
+		DA4525342DBD968F001AFE0D /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DA45254E2DBDAEA3001AFE0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */,
+				DA45254D2DBDAEA3001AFE0D /* AppState.swift */,
+				DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */,
+				DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */,
+				DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DA4525502DBDAEA3001AFE0D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DA45254F2DBDAEA3001AFE0D /* AuthService.swift */,
+				DAA5A6DA2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift */,
+				DAA5A6DC2DBDB82000AD57E4 /* FirestoreService.swift */,
+				DA3CD4AB2DC711810033EF02 /* DataService.swift */,
+				DA0415A92DBF2ED900607BEB /* NeatfloDataManager.swift */,
+				DA3E93482DC86DE5004BA2BB /* MockDataService.swift */,
+				DA80C8BC2DCFCDBB00B879C2 /* PersistenceController.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		DA4525532DBDAEA3001AFE0D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DAAC15852DC2B7D40096E81E /* Assets.xcassets */,
+				DA4525512DBDAEA3001AFE0D /* AuthViewModel.swift */,
+				DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */,
+				DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */,
+				DA10C48C2DC71A07009BFBF8 /* OpportunitiesViewModel.swift */,
+				DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		DA4525552DBDAEA3001AFE0D /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				DA4525542DBDAEA3001AFE0D /* LoginView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		DA4525572DBDAEA3001AFE0D /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				DA4525562DBDAEA3001AFE0D /* FeedView.swift */,
+				DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		DA4525592DBDAEA3001AFE0D /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				DA4525582DBDAEA3001AFE0D /* SplashView.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		DA45255A2DBDAEA3001AFE0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DA4525552DBDAEA3001AFE0D /* Auth */,
+				DA4525572DBDAEA3001AFE0D /* Main */,
+				DA4525592DBDAEA3001AFE0D /* Splash */,
+				DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */,
+				DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */,
+				DA7D897C2DD123A900EE5B88 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -99,6 +282,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA4525282DBD910E001AFE0D /* Build configuration list for PBXNativeTarget "Neatflo" */;
 			buildPhases = (
+				EFE0141AE8AA1C20417AEAF5 /* [CP] Check Pods Manifest.lock */,
 				DA4524FF2DBD910C001AFE0D /* Sources */,
 				DA4525002DBD910C001AFE0D /* Frameworks */,
 				DA4525012DBD910C001AFE0D /* Resources */,
@@ -107,12 +291,7 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				DA4525052DBD910C001AFE0D /* Neatflo */,
-			);
 			name = Neatflo;
-			packageProductDependencies = (
-			);
 			productName = Neatflo;
 			productReference = DA4525032DBD910C001AFE0D /* Neatflo.app */;
 			productType = "com.apple.product-type.application";
@@ -130,12 +309,7 @@
 			dependencies = (
 				DA4525162DBD910E001AFE0D /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				DA4525172DBD910E001AFE0D /* NeatfloTests */,
-			);
 			name = NeatfloTests;
-			packageProductDependencies = (
-			);
 			productName = NeatfloTests;
 			productReference = DA4525142DBD910E001AFE0D /* NeatfloTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -153,12 +327,7 @@
 			dependencies = (
 				DA4525202DBD910E001AFE0D /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				DA4525212DBD910E001AFE0D /* NeatfloUITests */,
-			);
 			name = NeatfloUITests;
-			packageProductDependencies = (
-			);
 			productName = NeatfloUITests;
 			productReference = DA45251E2DBD910E001AFE0D /* NeatfloUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -187,6 +356,7 @@
 				};
 			};
 			buildConfigurationList = DA4524FE2DBD910C001AFE0D /* Build configuration list for PBXProject "Neatflo" */;
+			compatibilityVersion = "Xcode 15.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -195,7 +365,9 @@
 			);
 			mainGroup = DA4524FA2DBD910C001AFE0D;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			packageReferences = (
+				DA0415AD2DBF33C700607BEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = DA4525042DBD910C001AFE0D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -212,6 +384,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAAC15862DC2B7D40096E81E /* Assets.xcassets in Resources */,
+				DA0415AF2DBF4CC600607BEB /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,11 +405,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		EFE0141AE8AA1C20417AEAF5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Neatflo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA4524FF2DBD910C001AFE0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAA5059B2DDAB51300D80412 /* LoginViewModel.swift in Sources */,
+				DA0415AA2DBF2ED900607BEB /* NeatfloDataManager.swift in Sources */,
+				DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */,
+				DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */,
+				DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */,
+				DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */,
+				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,
+				DA10C48D2DC71A07009BFBF8 /* OpportunitiesViewModel.swift in Sources */,
+				DA45255E2DBDAEA3001AFE0D /* AuthViewModel.swift in Sources */,
+				DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */,
+				DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */,
+				DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */,
+				DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */,
+				DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */,
+				DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */,
+				DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */,
+				DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */,
+				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,
+				DAA5A6DD2DBDB82000AD57E4 /* FirestoreService.swift in Sources */,
+				DA3CD4AE2DC7126C0033EF02 /* OpportunityFeedView.swift in Sources */,
+				DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */,
+				DAA5A6DB2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift in Sources */,
+				DA80C8BD2DCFCDBB00B879C2 /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -385,7 +607,9 @@
 		};
 		DA4525292DBD910E001AFE0D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 842D2D3478D68A149DE1672C /* Pods-Neatflo.debug.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Neatflo/Neatflo.entitlements;
@@ -395,7 +619,61 @@
 				DEVELOPMENT_TEAM = QFQW29JWKY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAppCheckInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RecaptchaInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/abseil\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreSwift/FirebaseFirestoreSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RecaptchaInterop/RecaptchaInterop.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/abseil/absl.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+				);
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -406,25 +684,39 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Neatflo.Neatflo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				"SYSTEM_FRAMEWORK_SEARCH_PATHS[arch=*]" = "";
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				WARNING_CFLAGS = "-suppress-warnings";
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
 		};
 		DA45252A2DBD910E001AFE0D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 997D5B6277023DA8AF9A99F5 /* Pods-Neatflo.release.xcconfig */;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Neatflo/Neatflo.entitlements;
@@ -434,7 +726,62 @@
 				DEVELOPMENT_TEAM = QFQW29JWKY;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAppCheckInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreInternal\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleDataTransport\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RecaptchaInterop\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/abseil\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb\"",
+					"\"${PODS_ROOT}/FirebaseAnalytics/Frameworks\"",
+					"\"${PODS_ROOT}/GoogleAppMeasurement/Frameworks\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/FirebaseAnalytics/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/AdIdSupport\"",
+					"\"${PODS_XCFRAMEWORKS_BUILD_DIR}/GoogleAppMeasurement/WithoutAdIdSupport\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/BoringSSL-GRPC/openssl_grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAppCheckInterop/FirebaseAppCheckInterop.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseAuth/FirebaseAuth.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreExtension/FirebaseCoreExtension.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCoreInternal/FirebaseCoreInternal.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreInternal/FirebaseFirestoreInternal.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestoreSwift/FirebaseFirestoreSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseInstallations/FirebaseInstallations.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseSharedSwift/FirebaseSharedSwift.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/GoogleUtilities/GoogleUtilities.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/PromisesObjC/FBLPromises.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/RecaptchaInterop/RecaptchaInterop.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/abseil/absl.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-C++/grpcpp.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/gRPC-Core/grpc.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/leveldb-library/leveldb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/nanopb/nanopb.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseCore/FirebaseCore.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/FirebaseFirestore.framework/Headers\"",
+				);
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -445,18 +792,29 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = Neatflo.Neatflo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
+				SYSTEM_FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				TARGETED_DEVICE_FAMILY = "1,2,7";
+				WARNING_CFLAGS = "-suppress-warnings";
 				XROS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
@@ -591,6 +949,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DA0415AD2DBF33C700607BEB /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = DA4524FB2DBD910C001AFE0D /* Project object */;
 }

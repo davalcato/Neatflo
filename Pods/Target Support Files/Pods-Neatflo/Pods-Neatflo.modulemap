@@ -1,0 +1,6 @@
+framework module Pods_Neatflo {
+  umbrella header "Pods-Neatflo-umbrella.h"
+
+  export *
+  module * { export * }
+}
