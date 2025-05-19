@@ -12,6 +12,13 @@ class LoginViewModel: ObservableObject {
     @Published var password: String = ""
     @Published var errorMessage: String?
     @Published var isLoading: Bool = false
+    @Published var registerUser: Bool = false
+    @Published var registerUserValid: Bool = false
+    @Published var loginUserValid: Bool = false
+    @Published var showPassword: Bool = false
+    @Published var reEnterPassword: String = ""
+    @Published var showReEnterPassword: Bool = false
+    
 
     func login() {
         errorMessage = nil

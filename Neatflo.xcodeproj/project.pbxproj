@@ -33,6 +33,7 @@
 		DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */; };
 		DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */; };
 		DAAC15862DC2B7D40096E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAC15852DC2B7D40096E81E /* Assets.xcassets */; };
+		DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		DAAC158D2DC2D4660096E81E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		DAAC158E2DC2D4660096E81E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB3D88E2DC6DCF600EBF26C /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				DA4525582DBDAEA3001AFE0D /* SplashView.swift */,
+				DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */,
 			);
 			path = Splash;
 			sourceTree = "<group>";
@@ -455,6 +458,7 @@
 				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,
 				DAA5A6DD2DBDB82000AD57E4 /* FirestoreService.swift in Sources */,
 				DA3CD4AE2DC7126C0033EF02 /* OpportunityFeedView.swift in Sources */,
+				DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */,
 				DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */,
 				DAA5A6DB2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift in Sources */,
 				DA80C8BD2DCFCDBB00B879C2 /* PersistenceController.swift in Sources */,
@@ -682,8 +686,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -790,8 +794,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

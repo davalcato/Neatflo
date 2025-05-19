@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SplashView: View {
     @State private var showLogin = false
+    @StateObject private var loginViewModel = LoginViewModel()
 
     var body: some View {
         ZStack {
@@ -50,7 +51,7 @@ struct SplashView: View {
             }
         }
         .fullScreenCover(isPresented: $showLogin) {
-            LoginView()
+            LoginView(loginData: loginViewModel)
         }
     }
 }
