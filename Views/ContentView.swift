@@ -10,23 +10,25 @@ import SwiftData
 
 @available(iOS 17.0, *)
 struct ContentView: View {
+    @State private var hasSeenOnboarding = UserDefaults.standard.bool(forKey: "hasSeenOnboarding")
+    @StateObject private var appState = AppState()
+    
     @Environment(\.modelContext) private var modelContext
     @Query private var opportunities: [Opportunity]
     
     var body: some View {
-        NavigationView {
-            List(opportunities) { opportunity in
-                VStack(alignment: .leading) {
-                    Text(opportunity.title)
-                        .font(.headline)
-                    Text(opportunity.company)
-                        .foregroundColor(.secondary)
-                }
-            }
-            .navigationTitle("Opportunities")
+        if !hasSeenOnboarding {
+            OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
+        } else if appState.isLoggedIn {
+            MainContentView()
+                .environmentObject(appState)
+        } else {
+            SplashView()
+                .environmentObject(appState)
         }
     }
 }
+
 
 #Preview {
     if #available(iOS 17.0, *) {

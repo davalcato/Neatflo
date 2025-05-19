@@ -12,21 +12,39 @@ import SwiftData
 struct NeatfloApp: App {
     @StateObject private var appState = AppState()
     @StateObject private var loginData = LoginViewModel()
+    @AppStorage("hasSeenOnboarding") private var hasSeenOnboarding = false
     
     var body: some Scene {
         WindowGroup {
-            if #available(iOS 17.0, *) {
-                SplashView()
-                    .modelContainer(AppDelegate.sharedModelContainer)
-                    .environmentObject(appState)
-            } else {
-                SplashView()
-                    .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
-                    .environmentObject(appState)
+            Group {
+                if hasSeenOnboarding {
+                    SplashView()
+                        .environmentObject(appState)
+                        .environmentObject(loginData)
+                        .background(Color(.systemBackground).ignoresSafeArea())
+                } else {
+                    OnboardingView(hasSeenOnboarding: $hasSeenOnboarding)
+                        .environmentObject(appState)
+                        .background(Color(.systemBackground).ignoresSafeArea())
+                }
             }
+            .modifier(ModelContainerModifier())
         }
     }
 }
+
+private struct ModelContainerModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        if #available(iOS 17.0, *) {
+            return content
+                .modelContainer(AppDelegate.sharedModelContainer)
+        } else {
+            return content
+                .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+        }
+    }
+}
+
 
 
 
