@@ -218,18 +218,38 @@ struct LoginView: View {
         hideKeyboard()
         
         if loginData.registerUser {
-            guard loginData.registerUserValid else {
+            // Registration Validation
+            guard !loginData.email.isEmpty && !loginData.password.isEmpty && !loginData.reEnterPassword.isEmpty else {
                 loginData.errorMessage = "Please make sure all fields are filled and passwords match."
                 showErrorAlert = true
                 return
             }
             
-            if loginData.isEmailRegistered(loginData.email) {
+            guard loginData.validateEmail(loginData.email) else {
+                loginData.errorMessage = "Please enter a valid email address."
+                showErrorAlert = true
+                return
+            }
+            
+            guard loginData.validatePassword(loginData.password) else {
+                loginData.errorMessage = "Password must be at least 8 characters."
+                showErrorAlert = true
+                return
+            }
+            
+            guard loginData.password == loginData.reEnterPassword else {
+                loginData.errorMessage = "Please make sure all fields are filled and passwords match."
+                showErrorAlert = true
+                return
+            }
+            
+            guard !loginData.isEmailRegistered(loginData.email) else {
                 loginData.errorMessage = "This email is already registered."
                 showErrorAlert = true
                 return
             }
             
+            // Successful registration
             loginData.registeredAccounts[loginData.email] = loginData.password
             loginData.saveAccounts()
             
@@ -240,7 +260,9 @@ struct LoginView: View {
                 loginData.registerUser = false
                 appState.isLoggedIn = true
             }
+            
         } else {
+            // Login Validation
             guard loginData.loginUserValid else {
                 loginData.errorMessage = "Email and password cannot be empty."
                 showErrorAlert = true
