@@ -10,11 +10,13 @@ import SwiftUI
 struct LoginView: View {
     @ObservedObject var loginData: LoginViewModel
     @EnvironmentObject var appState: AppState
+    @Environment(\.presentationMode) var presentationMode
+
     @State private var showErrorAlert = false
     @State private var showSuccessMessage = false
     @State private var showFailureMessage = false
     @State private var showPassword: Bool = false
-    
+
     let gradient = LinearGradient(
         gradient: Gradient(colors: [
             Color(red: 0.2, green: 0.5, blue: 0.3).opacity(0.8),
@@ -23,28 +25,28 @@ struct LoginView: View {
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )
-    
+
     let buttonColor = Color(red: 0.3, green: 0.7, blue: 0.5)
     let cardBackground = Color(.systemBackground)
-    
+
     var body: some View {
         NavigationView {
-            ZStack {
+            ZStack(alignment: .topLeading) {
                 gradient.ignoresSafeArea()
-                
+
                 VStack {
                     Spacer()
-                    
+
                     Image(systemName: "leaf.fill")
                         .font(.system(size: 60))
                         .foregroundColor(.white)
                         .padding(.bottom, 10)
-                    
+
                     Text(loginData.registerUser ? "Create Your Account" : "Welcome Back")
                         .font(.system(size: 34, weight: .bold))
                         .foregroundColor(.white)
                         .padding(.bottom, 20)
-                    
+
                     VStack(spacing: 16) {
                         CustomTextField(
                             icon: "envelope.fill",
@@ -56,7 +58,7 @@ struct LoginView: View {
                         )
                         .background(Color.white.opacity(0.1))
                         .cornerRadius(10)
-                        
+
                         CustomTextField(
                             icon: "lock.fill",
                             title: "Password",
@@ -67,7 +69,7 @@ struct LoginView: View {
                         )
                         .background(Color.white.opacity(0.1))
                         .cornerRadius(10)
-                        
+
                         if loginData.registerUser {
                             CustomTextField(
                                 icon: "lock.rotation",
@@ -80,7 +82,7 @@ struct LoginView: View {
                             .background(Color.white.opacity(0.1))
                             .cornerRadius(10)
                         }
-                        
+
                         Button(action: handleAuthAction) {
                             Text(loginData.registerUser ? "Register" : "Login")
                                 .fontWeight(.semibold)
@@ -90,23 +92,23 @@ struct LoginView: View {
                                 .foregroundColor(.white)
                                 .cornerRadius(10)
                         }
-                        
+
                         if showSuccessMessage {
                             Text("✅ Registration successful!")
                                 .foregroundColor(.green)
                                 .transition(.opacity)
                         }
-                        
+
                         if showFailureMessage {
                             Text("❌ Registration failed. Try again.")
                                 .foregroundColor(.red)
                                 .transition(.opacity)
                         }
-                        
+
                         Text("or continue with")
                             .foregroundColor(.white.opacity(0.7))
                             .padding(.top, 8)
-                        
+
                         Button(action: {
                             print("Mock Google Sign-In")
                         }) {
@@ -121,7 +123,7 @@ struct LoginView: View {
                             .background(Color.red.opacity(0.8))
                             .cornerRadius(10)
                         }
-                        
+
                         Button(action: {
                             print("Mock Facebook Sign-In")
                         }) {
@@ -136,7 +138,7 @@ struct LoginView: View {
                             .background(Color.blue.opacity(0.8))
                             .cornerRadius(10)
                         }
-                        
+
                         Button(action: {
                             withAnimation {
                                 loginData.registerUser.toggle()
@@ -156,8 +158,22 @@ struct LoginView: View {
                     .cornerRadius(30)
                     .shadow(radius: 10)
                     .padding(.horizontal, 24)
-                    
+
                     Spacer()
+                }
+
+                // Back Button (Icon Only - Blue)
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.title2)
+                        .foregroundColor(.blue)
+                        .padding()
+                        .background(Color.white.opacity(0.9))
+                        .clipShape(Circle())
+                        .shadow(radius: 2)
+                        .padding()
                 }
             }
             .navigationBarHidden(true)
@@ -170,7 +186,8 @@ struct LoginView: View {
             }
         }
     }
-    
+
+    // MARK: - Login/Register Logic
     private func handleAuthAction() {
         if loginData.registerUser {
             if loginData.registerUserValid {
@@ -196,11 +213,11 @@ struct LoginView: View {
     }
 }
 
-// ✅ Place the Preview OUTSIDE the struct
 #Preview {
     LoginView(loginData: LoginViewModel())
         .environmentObject(AppState())
 }
+
 
 
 
