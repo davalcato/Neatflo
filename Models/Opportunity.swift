@@ -13,9 +13,11 @@ import SwiftData
 @available(iOS 17, *)
 @Model
 final class Opportunity {
-    @Attribute(.unique) var id: UUID
+    @Attribute(.unique)
+    var id: UUID
     var title: String
     var company: String
+    var location: String?
     var summary: String
     var matchStrength: Double
     var timestamp: Date

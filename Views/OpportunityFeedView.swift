@@ -67,44 +67,44 @@ struct OpportunityFeedView: View {
 }
 
 // MARK: - Card Subview
-@available(iOS 17, *)
-struct OpportunityCard: View {
-    let opportunity: Opportunity
-    
-    var body: some View {
-        VStack(alignment: .leading, spacing: 8) {
-            HStack {
-                Text(opportunity.title)
-                    .font(.headline)
-                Spacer()
-                Text(String(format: "%.0f%%", opportunity.matchStrength * 100))
-                    .foregroundColor(matchColor)
-            }
-            
-            Text(opportunity.company)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-            
-            Text(opportunity.summary)
-                .font(.body)
-            
-            Text(opportunity.timestamp.formatted())
-                .font(.caption)
-                .foregroundColor(.gray)
-        }
-        .padding(.vertical, 8)
-    }
-    
-    private var matchColor: Color {
-        opportunity.matchStrength > 0.85 ? .green :
-        opportunity.matchStrength > 0.7 ? .orange : .red
-    }
-}
-
-#Preview {
-    if #available(iOS 17, *) {
-        OpportunityFeedView()
-    } else {
-        Text("Preview requires iOS 17+")
-    }
-}
+//@available(iOS 17, *)
+//struct OpportunityCard: View {
+//    let opportunity: Opportunity
+//    
+//    var body: some View {
+//        VStack(alignment: .leading, spacing: 8) {
+//            HStack {
+//                Text(opportunity.title)
+//                    .font(.headline)
+//                Spacer()
+//                Text(String(format: "%.0f%%", opportunity.matchStrength * 100))
+//                    .foregroundColor(matchColor)
+//            }
+//            
+//            Text(opportunity.company)
+//                .font(.subheadline)
+//                .foregroundColor(.secondary)
+//            
+//            Text(opportunity.summary)
+//                .font(.body)
+//            
+//            Text(opportunity.timestamp.formatted())
+//                .font(.caption)
+//                .foregroundColor(.gray)
+//        }
+//        .padding(.vertical, 8)
+//    }
+//    
+//    private var matchColor: Color {
+//        opportunity.matchStrength > 0.85 ? .green :
+//        opportunity.matchStrength > 0.7 ? .orange : .red
+//    }
+//}
+//
+//#Preview {
+//    if #available(iOS 17, *) {
+//        OpportunityFeedView()
+//    } else {
+//        Text("Preview requires iOS 17+")
+//    }
+//}
