@@ -12,6 +12,7 @@
 		DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */; };
 		DA0415AF2DBF4CC600607BEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */; };
 		DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */; };
+		DA2A7C442DE107BE0066DAC6 /* CardViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2A7C432DE107BE0066DAC6 /* CardViewModifier.swift */; };
 		DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3CD4AB2DC711810033EF02 /* DataService.swift */; };
 		DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E93482DC86DE5004BA2BB /* MockDataService.swift */; };
 		DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525582DBDAEA3001AFE0D /* SplashView.swift */; };
@@ -70,6 +71,7 @@
 		DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityListView.swift; sourceTree = "<group>"; };
 		DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		DA2A7C432DE107BE0066DAC6 /* CardViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModifier.swift; sourceTree = "<group>"; };
 		DA3CD4AB2DC711810033EF02 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		DA3E93482DC86DE5004BA2BB /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		DA4525032DBD910C001AFE0D /* Neatflo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neatflo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -289,6 +291,7 @@
 				DA4525582DBDAEA3001AFE0D /* SplashView.swift */,
 				DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */,
 				DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */,
+				DA2A7C432DE107BE0066DAC6 /* CardViewModifier.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */,
 				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,
 				DAA5A6DD2DBDB82000AD57E4 /* FirestoreService.swift in Sources */,
+				DA2A7C442DE107BE0066DAC6 /* CardViewModifier.swift in Sources */,
 				DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */,
 				DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */,
 				DAA5A6DB2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift in Sources */,

@@ -16,6 +16,7 @@ struct SwipeableCardView<Content: View>: View {
 
     var body: some View {
         content()
+            .cardView()
             .offset(x: offset.width, y: 0)
             .rotationEffect(.degrees(Double(offset.width / 20)))
             .gesture(
@@ -36,21 +37,15 @@ struct SwipeableCardView<Content: View>: View {
     }
 }
 
-
 #Preview {
     SwipeableCardView(
         content: {
-            VStack {
+            VStack(alignment: .leading) {
                 Text("Sample Opportunity")
                     .font(.headline)
                 Text("This is a preview card.")
                     .font(.subheadline)
             }
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(.ultraThinMaterial)
-            .cornerRadius(16)
-            .shadow(radius: 6)
         },
         onSwipeLeft: {
             print("Swiped Left")
@@ -62,4 +57,5 @@ struct SwipeableCardView<Content: View>: View {
     .padding()
     .previewLayout(.sizeThatFits)
 }
+
 
