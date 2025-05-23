@@ -14,13 +14,15 @@ import SwiftData
 struct FeedView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel: FeedViewModel
-    @State private var showingProfile = false
+    @StateObject private var profileVM = ProfileCardViewModel()
     
+    @State private var showingProfile = false
+
     init() {
         let context = ModelContext(Persistence.shared.container)
         _viewModel = StateObject(wrappedValue: FeedViewModel(modelContext: context))
     }
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
@@ -30,7 +32,7 @@ struct FeedView: View {
                 } else {
                     opportunityList
                 }
-                
+
                 if let error = viewModel.errorMessage {
                     ErrorView(error: error, onDismiss: { viewModel.errorMessage = nil })
                 }
@@ -51,19 +53,31 @@ struct FeedView: View {
             }
         }
     }
-    
+
+    // ✅ Keep this inside the struct so profileVM is in scope
     private var opportunityList: some View {
-        ScrollView {
-            LazyVStack(spacing: 16) {
-                ForEach(viewModel.opportunities) { opportunity in
-                    OpportunityCard(opportunity: opportunity)
-                        .padding(.horizontal)
+        List {
+            ForEach(viewModel.opportunities, id: \.id) { opportunity in
+                OpportunityCard(opportunity: opportunity) {
+                    Group {
+                        if opportunity.title == "Investor Introduction" {
+                            ProfileCardView(profiles: profileVM.investorProfiles)
+                        } else if opportunity.title == "Co-Founder Match" {
+                            ProfileCardView(profiles: profileVM.coFounderProfiles)
+                        } else {
+                            Text("Details not available")
+                        }
+                    }
                 }
+                .listRowSeparator(.hidden)
+                .listRowBackground(Color.clear)
             }
-            .padding(.vertical)
         }
+        .listStyle(.plain)
+        .animation(.easeInOut, value: viewModel.opportunities)
     }
 }
+
 
 // MARK: - Error View
 struct ErrorView: View {

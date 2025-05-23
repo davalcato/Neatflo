@@ -12,7 +12,7 @@ import SwiftData
 
 @available(iOS 17, *)
 @Model
-final class Opportunity {
+final class Opportunity: Identifiable {
     @Attribute(.unique)
     var id: UUID
     var title: String
@@ -22,6 +22,7 @@ final class Opportunity {
     var matchStrength: Double
     var timestamp: Date
     
+
     init(title: String, company: String, summary: String,
          matchStrength: Double, timestamp: Date) {
         self.id = UUID()
@@ -32,6 +33,7 @@ final class Opportunity {
         self.timestamp = timestamp
     }
 }
+
 
 // MARK: - Migration Helpers (fileprivate scope)
 fileprivate struct OldOpportunity: Codable {

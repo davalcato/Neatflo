@@ -12,9 +12,7 @@
 		DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */; };
 		DA0415AF2DBF4CC600607BEB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */; };
 		DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */; };
-		DA1CC30F2DDC404F00C9F195 /* OpportunityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1CC30E2DDC404F00C9F195 /* OpportunityCard.swift */; };
 		DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3CD4AB2DC711810033EF02 /* DataService.swift */; };
-		DA3CD4AE2DC7126C0033EF02 /* OpportunityFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */; };
 		DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA3E93482DC86DE5004BA2BB /* MockDataService.swift */; };
 		DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525582DBDAEA3001AFE0D /* SplashView.swift */; };
 		DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45254F2DBDAEA3001AFE0D /* AuthService.swift */; };
@@ -26,6 +24,14 @@
 		DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */; };
 		DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */; };
 		DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */; };
+		DA6498EA2DDCD39E009861EB /* SwipeableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */; };
+		DA6498F72DDCFC73009861EB /* OpportunityDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498F42DDCFC73009861EB /* OpportunityDeckView.swift */; };
+		DA6498F82DDCFC73009861EB /* OpportunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498F22DDCFC73009861EB /* OpportunitiesViewModel.swift */; };
+		DA6498F92DDCFC73009861EB /* OpportunityFeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498F52DDCFC73009861EB /* OpportunityFeedView.swift */; };
+		DA6498FA2DDCFC73009861EB /* OpportunityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498F32DDCFC73009861EB /* OpportunityCard.swift */; };
+		DA6498FC2DDD006A009861EB /* OpportunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */; };
+		DA6498FE2DDD09B9009861EB /* ProfileCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498FD2DDD09B9009861EB /* ProfileCardViewModel.swift */; };
+		DA6499002DDD69B8009861EB /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498FF2DDD69B8009861EB /* ProfileCardView.swift */; };
 		DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */; };
 		DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897C2DD123A900EE5B88 /* ContentView.swift */; };
 		DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */; };
@@ -64,9 +70,7 @@
 		DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityListView.swift; sourceTree = "<group>"; };
 		DA0415AE2DBF4CC600607BEB /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DA1CC30E2DDC404F00C9F195 /* OpportunityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityCard.swift; sourceTree = "<group>"; };
 		DA3CD4AB2DC711810033EF02 /* DataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
-		DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityFeedView.swift; sourceTree = "<group>"; };
 		DA3E93482DC86DE5004BA2BB /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		DA4525032DBD910C001AFE0D /* Neatflo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Neatflo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA4525142DBD910E001AFE0D /* NeatfloTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NeatfloTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,14 @@
 		DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageModifier.swift; sourceTree = "<group>"; };
 		DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCardView.swift; sourceTree = "<group>"; };
+		DA6498F22DDCFC73009861EB /* OpportunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesViewModel.swift; sourceTree = "<group>"; };
+		DA6498F32DDCFC73009861EB /* OpportunityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityCard.swift; sourceTree = "<group>"; };
+		DA6498F42DDCFC73009861EB /* OpportunityDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityDeckView.swift; sourceTree = "<group>"; };
+		DA6498F52DDCFC73009861EB /* OpportunityFeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityFeedView.swift; sourceTree = "<group>"; };
+		DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesView.swift; sourceTree = "<group>"; };
+		DA6498FD2DDD09B9009861EB /* ProfileCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardViewModel.swift; sourceTree = "<group>"; };
+		DA6498FF2DDD69B8009861EB /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityMO.swift; sourceTree = "<group>"; };
 		DA7D897C2DD123A900EE5B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeatfloApp.swift; sourceTree = "<group>"; };
@@ -215,7 +227,8 @@
 				DA0415B02DBF4D5C00607BEB /* AppDelegate.swift */,
 				DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */,
 				DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */,
-				DA1CC30E2DDC404F00C9F195 /* OpportunityCard.swift */,
+				DA6498F32DDCFC73009861EB /* OpportunityCard.swift */,
+				DA6498F42DDCFC73009861EB /* OpportunityDeckView.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -240,7 +253,10 @@
 				DAAC15852DC2B7D40096E81E /* Assets.xcassets */,
 				DA4525512DBDAEA3001AFE0D /* AuthViewModel.swift */,
 				DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */,
+				DA6498F22DDCFC73009861EB /* OpportunitiesViewModel.swift */,
+				DA6498F52DDCFC73009861EB /* OpportunityFeedView.swift */,
 				DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */,
+				DA6498FD2DDD09B9009861EB /* ProfileCardViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -249,6 +265,8 @@
 			isa = PBXGroup;
 			children = (
 				DA4525542DBDAEA3001AFE0D /* LoginView.swift */,
+				DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */,
+				DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -260,6 +278,7 @@
 				DA4525562DBDAEA3001AFE0D /* FeedView.swift */,
 				DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */,
 				DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */,
+				DA6498FF2DDD69B8009861EB /* ProfileCardView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -281,7 +300,6 @@
 				DA4525572DBDAEA3001AFE0D /* Main */,
 				DA4525592DBDAEA3001AFE0D /* Shared */,
 				DA0415AB2DBF2F7C00607BEB /* OpportunityListView.swift */,
-				DA3CD4AD2DC7126C0033EF02 /* OpportunityFeedView.swift */,
 				DA7D897C2DD123A900EE5B88 /* ContentView.swift */,
 			);
 			path = Views;
@@ -451,25 +469,31 @@
 				DA0415AA2DBF2ED900607BEB /* NeatfloDataManager.swift in Sources */,
 				DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */,
 				DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */,
+				DA6499002DDD69B8009861EB /* ProfileCardView.swift in Sources */,
 				DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */,
 				DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */,
 				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,
+				DA6498F72DDCFC73009861EB /* OpportunityDeckView.swift in Sources */,
+				DA6498F82DDCFC73009861EB /* OpportunitiesViewModel.swift in Sources */,
+				DA6498F92DDCFC73009861EB /* OpportunityFeedView.swift in Sources */,
+				DA6498FA2DDCFC73009861EB /* OpportunityCard.swift in Sources */,
 				DA45255E2DBDAEA3001AFE0D /* AuthViewModel.swift in Sources */,
+				DA6498FE2DDD09B9009861EB /* ProfileCardViewModel.swift in Sources */,
 				DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */,
 				DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */,
 				DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */,
 				DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */,
 				DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */,
+				DA6498FC2DDD006A009861EB /* OpportunitiesView.swift in Sources */,
 				DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */,
 				DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */,
-				DA1CC30F2DDC404F00C9F195 /* OpportunityCard.swift in Sources */,
 				DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */,
 				DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */,
 				DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */,
+				DA6498EA2DDCD39E009861EB /* SwipeableCardView.swift in Sources */,
 				DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */,
 				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,
 				DAA5A6DD2DBDB82000AD57E4 /* FirestoreService.swift in Sources */,
-				DA3CD4AE2DC7126C0033EF02 /* OpportunityFeedView.swift in Sources */,
 				DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */,
 				DA0415AC2DBF2F7C00607BEB /* OpportunityListView.swift in Sources */,
 				DAA5A6DB2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift in Sources */,
