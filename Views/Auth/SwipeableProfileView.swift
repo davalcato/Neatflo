@@ -99,7 +99,7 @@ struct SwipeableProfileView: View {
             name: "Dave Patel",
             title: "CEO",
             company: "StartIQ",
-            photo: "dave",
+            photo: "Dave Patel",
             raised: "$12M",
             role: "Co-Founder",
             bio: "Serial founder and operator."
@@ -108,7 +108,7 @@ struct SwipeableProfileView: View {
             name: "Zoe Li",
             title: "CMO",
             company: "Glow",
-            photo: "zoe",
+            photo: "Zoe Li",
             raised: "$3M",
             role: "Co-Founder",
             bio: "Growth marketing expert."

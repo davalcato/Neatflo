@@ -38,9 +38,9 @@ class ProfileCardViewModel: ObservableObject {
     ]
 
     @Published var coFounderProfiles: [Profile] = [
-        Profile(name: "Jess Wong", title: "CTO", company: "Neatflo", photo: "jess", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups."),
-        Profile(name: "Dave Patel", title: "Engineer", company: "HealthAI", photo: "dave", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups."),
-        Profile(name: "Zoe Li", title: "Designer", company: "EcoLoop", photo: "zoe", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups.")
+        Profile(name: "Jess Wong", title: "CTO", company: "Neatflo", photo: "Jess Wong", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups."),
+        Profile(name: "Dave Patel", title: "Engineer", company: "HealthAI", photo: "Dave Patel", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups."),
+        Profile(name: "Zoe Li", title: "Designer", company: "EcoLoop", photo: "Zoe Li", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups.")
     ]
 }
 
