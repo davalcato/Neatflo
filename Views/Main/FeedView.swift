@@ -15,8 +15,10 @@ struct FeedView: View {
     @Environment(\.modelContext) private var modelContext
     @StateObject private var viewModel: FeedViewModel
     @StateObject private var profileVM = ProfileCardViewModel()
-    
+
     @State private var showingProfile = false
+    @State private var navigateToSwipeView = false
+    @State private var selectedOpportunity: Opportunity?
 
     init() {
         let context = ModelContext(Persistence.shared.container)
@@ -51,21 +53,37 @@ struct FeedView: View {
             .refreshable {
                 await viewModel.refresh()
             }
+            // Navigate to full-screen SwipeableProfileView if "Co-Founder Match" tapped
+            .navigationDestination(isPresented: $navigateToSwipeView) {
+                if let opportunity = selectedOpportunity, opportunity.title == "Co-Founder Match" {
+                    SwipeableProfileView(profiles: profileVM.coFounderProfiles)
+                }
+            }
         }
     }
 
-    // ✅ Keep this inside the struct so profileVM is in scope
+    // Opportunity List View
     private var opportunityList: some View {
         List {
             ForEach(viewModel.opportunities, id: \.id) { opportunity in
-                OpportunityCard(opportunity: opportunity) {
-                    Group {
-                        if opportunity.title == "Investor Introduction" {
-                            ProfileCardView(profiles: profileVM.investorProfiles)
-                        } else if opportunity.title == "Co-Founder Match" {
-                            ProfileCardView(profiles: profileVM.coFounderProfiles)
-                        } else {
-                            Text("Details not available")
+                Button {
+                    if opportunity.title == "Co-Founder Match" {
+                        selectedOpportunity = opportunity
+                        navigateToSwipeView = true
+                    }
+                } label: {
+                    OpportunityCard(opportunity: opportunity) {
+                        Group {
+                            if opportunity.title == "Investor Introduction" {
+                                ProfileCardView(profiles: profileVM.investorProfiles)
+                            } else if opportunity.title == "Co-Founder Match" {
+                                // This card is interactive
+                                Text("Tap to view Co-Founder Matches")
+                                    .foregroundColor(.blue)
+                                    .font(.headline)
+                            } else {
+                                Text("Details not available")
+                            }
                         }
                     }
                 }
@@ -77,6 +95,7 @@ struct FeedView: View {
         .animation(.easeInOut, value: viewModel.opportunities)
     }
 }
+
 
 
 // MARK: - Error View

@@ -43,6 +43,7 @@
 		DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */; };
 		DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */; };
 		DAAC15862DC2B7D40096E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAC15852DC2B7D40096E81E /* Assets.xcassets */; };
+		DAC5EA0C2DE243D300CF2ED4 /* SwipeableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */; };
 		DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +113,7 @@
 		DAAC158D2DC2D4660096E81E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		DAAC158E2DC2D4660096E81E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB3D88E2DC6DCF600EBF26C /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableProfileView.swift; sourceTree = "<group>"; };
 		DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -269,6 +271,7 @@
 				DA4525542DBDAEA3001AFE0D /* LoginView.swift */,
 				DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */,
 				DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */,
+				DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -473,6 +476,7 @@
 				DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */,
 				DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */,
 				DA6499002DDD69B8009861EB /* ProfileCardView.swift in Sources */,
+				DAC5EA0C2DE243D300CF2ED4 /* SwipeableProfileView.swift in Sources */,
 				DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */,
 				DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */,
 				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,

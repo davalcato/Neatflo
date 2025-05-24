@@ -78,6 +78,6 @@ class LoginViewModel: ObservableObject {
     func isEmailRegistered(_ email: String) -> Bool {
         registeredAccounts[email] != nil
     }
-}
+} 
 
 

@@ -16,12 +16,17 @@ struct MainContentView: View {
             if appState.isLoggedIn {
                 if #available(iOS 17.0, *) {
                     FeedView()
+                        .environmentObject(appState)
+                        .environmentObject(loginData)
                 } else {
                     // Fallback for earlier versions
                     Text("Upgrade to iOS 17+ for full features.")
+                        .padding()
+                        .multilineTextAlignment(.center)
                 }
             } else {
                 LoginView(loginData: loginData)
+                    .environmentObject(appState)
             }
         }
     }
@@ -34,5 +39,6 @@ struct MainContentView_Previews: PreviewProvider {
             .environmentObject(LoginViewModel())
     }
 }
+
 
 
