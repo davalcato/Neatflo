@@ -43,6 +43,7 @@
 		DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */; };
 		DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */; };
 		DAAC15862DC2B7D40096E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAC15852DC2B7D40096E81E /* Assets.xcassets */; };
+		DAC0A2D92DE43EC900DDA8DD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0A2D82DE43EC900DDA8DD /* MainView.swift */; };
 		DAC5EA0C2DE243D300CF2ED4 /* SwipeableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */; };
 		DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */; };
 /* End PBXBuildFile section */
@@ -113,6 +114,7 @@
 		DAAC158D2DC2D4660096E81E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		DAAC158E2DC2D4660096E81E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB3D88E2DC6DCF600EBF26C /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAC0A2D82DE43EC900DDA8DD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableProfileView.swift; sourceTree = "<group>"; };
 		DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -272,6 +274,7 @@
 				DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */,
 				DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */,
 				DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */,
+				DAC0A2D82DE43EC900DDA8DD /* MainView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -472,6 +475,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA5059B2DDAB51300D80412 /* LoginViewModel.swift in Sources */,
+				DAC0A2D92DE43EC900DDA8DD /* MainView.swift in Sources */,
 				DA0415AA2DBF2ED900607BEB /* NeatfloDataManager.swift in Sources */,
 				DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */,
 				DA45255B2DBDAEA3001AFE0D /* SplashView.swift in Sources */,

@@ -96,8 +96,6 @@ struct FeedView: View {
     }
 }
 
-
-
 // MARK: - Error View
 struct ErrorView: View {
     let error: String
