@@ -51,22 +51,19 @@ struct OpportunitiesView: View {
                 OpportunityCard(
                     opportunity: opportunity,
                     destination: {
-                        let normalizedTitle = opportunity.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-
-                        switch opportunity.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines) {
-                        case "investor introduction":
+                        let title = opportunity.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+                        
+                        if title.contains("investor") {
+                            // ✅ This ensures "Investor Introduction" is caught
                             return AnyView(SwipeableProfileView(profiles: profileVM.investorProfiles))
-                        case "co-founder match":
+                        } else if title.contains("co-founder") || title.contains("cofounder") {
+                            // ✅ This ensures "Co-Founder Match" is caught
                             return AnyView(SwipeableProfileView(profiles: profileVM.coFounderProfiles))
-                        default:
+                        } else {
                             return AnyView(Text("Details not available"))
                         }
-
                     }
                 )
-                .simultaneousGesture(TapGesture().onEnded {
-                    print("button tap: \(opportunity.title)")
-                })
                 .listRowSeparator(.hidden)
                 .listRowBackground(Color.clear)
             }
@@ -74,6 +71,7 @@ struct OpportunitiesView: View {
         .listStyle(.plain)
         .animation(.easeInOut, value: viewModel.opportunities)
     }
+
 
 }
 

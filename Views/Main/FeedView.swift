@@ -66,24 +66,16 @@ struct FeedView: View {
     private var opportunityList: some View {
         List {
             ForEach(viewModel.opportunities, id: \.id) { opportunity in
-                Button {
-                    if opportunity.title == "Co-Founder Match" {
-                        selectedOpportunity = opportunity
-                        navigateToSwipeView = true
-                    }
-                } label: {
-                    OpportunityCard(opportunity: opportunity) {
-                        Group {
-                            if opportunity.title == "Investor Introduction" {
-                                ProfileCardView(profiles: profileVM.investorProfiles)
-                            } else if opportunity.title == "Co-Founder Match" {
-                                // This card is interactive
-                                Text("Tap to view Co-Founder Matches")
-                                    .foregroundColor(.blue)
-                                    .font(.headline)
-                            } else {
-                                Text("Details not available")
-                            }
+                OpportunityCard(opportunity: opportunity) {
+                    Group {
+                        if opportunity.title == "Investor Introduction" {
+                            // Clicking View Details navigates here
+                            ProfileCardView(profiles: profileVM.investorProfiles)
+                        } else if opportunity.title == "Co-Founder Match" {
+                            // Clicking View Details navigates to swipe view
+                            SwipeableProfileView(profiles: profileVM.coFounderProfiles)
+                        } else {
+                            Text("Details not available")
                         }
                     }
                 }
@@ -94,6 +86,7 @@ struct FeedView: View {
         .listStyle(.plain)
         .animation(.easeInOut, value: viewModel.opportunities)
     }
+
 }
 
 // MARK: - Error View
