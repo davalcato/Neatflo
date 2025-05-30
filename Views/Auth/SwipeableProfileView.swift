@@ -10,18 +10,17 @@ import SwiftUI
 @available(iOS 17, *)
 struct SwipeableProfileView: View {
     let profiles: [Profile]
-    @State private var currentIndex: Int = 0
     @State private var dragOffsets: [UUID: CGSize] = [:]
 
     var body: some View {
         TabView {
             ForEach(profiles) { profile in
-                VStack(spacing: 16) {
+                ZStack(alignment: .bottomLeading) {
                     Image(profile.photo)
                         .resizable()
-                        .scaledToFit()
-                        .frame(height: 300)
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .scaledToFill()
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.75)
+                        .clipped()
                         .offset(dragOffsets[profile.id] ?? .zero)
                         .gesture(
                             DragGesture()
@@ -34,29 +33,38 @@ struct SwipeableProfileView: View {
                                     }
                                 }
                         )
+                        .overlay(
+                            LinearGradient(
+                                gradient: Gradient(colors: [Color.black.opacity(0.6), Color.clear]),
+                                startPoint: .bottom,
+                                endPoint: .top
+                            )
+                        )
+                        .cornerRadius(0)
 
-                    Text(profile.name)
-                        .font(.title)
-                        .bold()
-
-                    Text("\(profile.title) at \(profile.company)")
-                        .font(.subheadline)
-
-                    Text("Raised: \(profile.raised)")
-                        .font(.subheadline)
-
-                    Text(profile.bio)
-                        .font(.body)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(profile.name)
+                            .font(.title)
+                            .bold()
+                        Text("\(profile.title) at \(profile.company)")
+                            .font(.subheadline)
+                        Text("Raised: \(profile.raised)")
+                            .font(.subheadline)
+                        Text(profile.bio)
+                            .font(.body)
+                    }
+                    .foregroundColor(.white)
+                    .padding()
+                    .padding(.bottom, 30)
                 }
-                .padding()
+                .ignoresSafeArea(edges: .top)
             }
         }
         .tabViewStyle(PageTabViewStyle())
         .navigationTitle("Profile")
     }
 }
+
 
 
 @available(iOS 17, *)
