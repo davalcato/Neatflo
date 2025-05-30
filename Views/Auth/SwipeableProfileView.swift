@@ -18,7 +18,7 @@ struct SwipeableProfileView: View {
             ForEach(profiles) { profile in
                 GeometryReader { geometry in
                     ZStack {
-                        // Background Image
+                        // Background Image with drag gesture
                         Image(profile.photo)
                             .resizable()
                             .scaledToFill()
@@ -47,24 +47,21 @@ struct SwipeableProfileView: View {
                             )
                             .animation(.easeInOut, value: dragOffset)
 
-                        // Conditional Icon Overlay
+                        // Conditional Icon (moving with drag)
                         if abs(dragOffset.width) > 20 {
-                            VStack {
-                                Spacer()
-                                Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 60, height: 60)
-                                    .padding()
-                                    .background(dragOffset.width > 0 ? Color.green : Color.red)
-                                    .clipShape(Circle())
-                                    .shadow(radius: 10)
-                                Spacer()
-                            }
-                            .transition(.opacity)
+                            Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                                .padding()
+                                .background(dragOffset.width > 0 ? Color.green : Color.red)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .offset(dragOffset) // Move with the image
+                                .animation(.easeInOut, value: dragOffset)
                         }
 
-                        // Bottom Text
+                        // Text content at the bottom left
                         VStack(alignment: .leading, spacing: 4) {
                             Spacer()
                             Text(profile.name)
