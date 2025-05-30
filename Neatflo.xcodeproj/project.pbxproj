@@ -22,6 +22,9 @@
 		DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525522DBDAEA3001AFE0D /* SplashViewModel.swift */; };
 		DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA45254D2DBDAEA3001AFE0D /* AppState.swift */; };
 		DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4525562DBDAEA3001AFE0D /* FeedView.swift */; };
+		DA572D0B2DE8274700371EFA /* SwipeCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D0A2DE8274700371EFA /* SwipeCardView.swift */; };
+		DA572D0D2DE82A3C00371EFA /* SwipeDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D0C2DE82A3C00371EFA /* SwipeDeckView.swift */; };
+		DA572D0F2DE8C08000371EFA /* SampleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D0E2DE8C08000371EFA /* SampleProfile.swift */; };
 		DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */; };
 		DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */; };
 		DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */; };
@@ -86,6 +89,9 @@
 		DA4525542DBDAEA3001AFE0D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		DA4525562DBDAEA3001AFE0D /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		DA4525582DBDAEA3001AFE0D /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		DA572D0A2DE8274700371EFA /* SwipeCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeCardView.swift; sourceTree = "<group>"; };
+		DA572D0C2DE82A3C00371EFA /* SwipeDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeckView.swift; sourceTree = "<group>"; };
+		DA572D0E2DE8C08000371EFA /* SampleProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProfile.swift; sourceTree = "<group>"; };
 		DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageModifier.swift; sourceTree = "<group>"; };
 		DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -249,6 +255,7 @@
 				DA0415A92DBF2ED900607BEB /* NeatfloDataManager.swift */,
 				DA3E93482DC86DE5004BA2BB /* MockDataService.swift */,
 				DA80C8BC2DCFCDBB00B879C2 /* PersistenceController.swift */,
+				DA572D0E2DE8C08000371EFA /* SampleProfile.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -275,6 +282,8 @@
 				DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */,
 				DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */,
 				DAC0A2D82DE43EC900DDA8DD /* MainView.swift */,
+				DA572D0A2DE8274700371EFA /* SwipeCardView.swift */,
+				DA572D0C2DE82A3C00371EFA /* SwipeDeckView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -482,6 +491,7 @@
 				DA6499002DDD69B8009861EB /* ProfileCardView.swift in Sources */,
 				DAC5EA0C2DE243D300CF2ED4 /* SwipeableProfileView.swift in Sources */,
 				DA0415B12DBF4D5C00607BEB /* AppDelegate.swift in Sources */,
+				DA572D0D2DE82A3C00371EFA /* SwipeDeckView.swift in Sources */,
 				DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */,
 				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,
 				DA6498F72DDCFC73009861EB /* OpportunityDeckView.swift in Sources */,
@@ -493,6 +503,7 @@
 				DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */,
 				DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */,
 				DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */,
+				DA572D0F2DE8C08000371EFA /* SampleProfile.swift in Sources */,
 				DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */,
 				DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */,
 				DA6498FC2DDD006A009861EB /* OpportunitiesView.swift in Sources */,
@@ -504,6 +515,7 @@
 				DA6498EA2DDCD39E009861EB /* SwipeableCardView.swift in Sources */,
 				DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */,
 				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,
+				DA572D0B2DE8274700371EFA /* SwipeCardView.swift in Sources */,
 				DAA5A6DD2DBDB82000AD57E4 /* FirestoreService.swift in Sources */,
 				DA2A7C442DE107BE0066DAC6 /* CardViewModifier.swift in Sources */,
 				DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */,

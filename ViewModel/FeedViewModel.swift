@@ -48,21 +48,34 @@ final class FeedViewModel: ObservableObject {
         await loadOpportunities()
     }
     
+    @available(iOS 17, *)
     private func seedSampleData() async {
+        let sampleProfile = Profile(
+            name: "Alex Johnson",
+            title: "Angel Investor",
+            company: "Neatflo Network",
+            photo: "alex", // ensure this image asset exists
+            raised: "$5M",
+            role: "Investor",
+            bio: "Focuses on early-stage startups in tech and health sectors."
+        )
+        
         let sampleOpportunities = [
             Opportunity(
                 title: "Investor Introduction",
                 company: "Neatflo Network",
                 summary: "Connect with angel investors interested in your sector",
                 matchStrength: 87,
-                timestamp: Date()
+                timestamp: Date(),
+                profile: sampleProfile
             ),
             Opportunity(
                 title: "Co-Founder Match",
                 company: "Founder Hub",
                 summary: "Meet potential technical co-founders with complementary skills",
                 matchStrength: 92,
-                timestamp: Date().addingTimeInterval(-86400)
+                timestamp: Date().addingTimeInterval(-86400),
+                profile: sampleProfile
             )
         ]
         

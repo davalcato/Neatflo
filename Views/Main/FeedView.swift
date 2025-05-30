@@ -185,23 +185,34 @@ struct ProfileView: View {
                     isStoredInMemoryOnly: true
                 )
             )
-            
+
+            let testProfile = Profile(
+                name: "Jess Wong",
+                title: "CTO",
+                company: "Neatflo Ventures",
+                photo: "jess",
+                raised: "$0",
+                role: "Engineer",
+                bio: "Building productivity tools with AI."
+            )
+
             let testOpportunity = Opportunity(
                 title: "Seed Funding",
                 company: "Neatflo Ventures",
                 summary: "Preview data",
                 matchStrength: 0.85,
-                timestamp: Date()
+                timestamp: Date(),
+                profile: testProfile
             )
-            
+
             container.mainContext.insert(testOpportunity)
-            
+
             return AnyView(FeedView().modelContainer(container))
         } else {
             return AnyView(Text("iOS 17+ required for this preview"))
         }
     }
-    
+
     return Group {
         switch result {
         case .success(let view):
@@ -212,4 +223,5 @@ struct ProfileView: View {
         }
     }
 }
+
 

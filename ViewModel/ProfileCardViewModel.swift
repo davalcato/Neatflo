@@ -6,18 +6,24 @@
 //
 
 import Foundation
+import SwiftData
 
-struct Profile: Identifiable {
-    let id: UUID
-    let name: String
-    let title: String
-    let company: String
-    let photo: String
-    let raised: String
-    let role: String
-    let bio: String
+@available(iOS 17, *)
+@Model
+final class Profile: Identifiable {
+    @Attribute(.unique)
+    var id: UUID
 
-    init(name: String, title: String, company: String, photo: String, raised: String, role: String, bio: String) {
+    var name: String
+    var title: String
+    var company: String
+    var photo: String
+    var raised: String
+    var role: String
+    var bio: String
+
+    init(name: String, title: String, company: String,
+         photo: String, raised: String, role: String, bio: String) {
         self.id = UUID()
         self.name = name
         self.title = title
@@ -29,6 +35,7 @@ struct Profile: Identifiable {
     }
 }
 
+@available(iOS 17, *)
 @MainActor
 class ProfileCardViewModel: ObservableObject {
     @Published var investorProfiles: [Profile] = [

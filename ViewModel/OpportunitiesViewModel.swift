@@ -24,19 +24,38 @@ class OpportunitiesViewModel: ObservableObject {
                     company: "Neatflo Ventures",
                     summary: "AI-powered workflow automation",
                     matchStrength: 0.87,
-                    timestamp: Date()
+                    timestamp: Date(),
+                    profile: Profile(
+                        name: "Jess Wong",
+                        title: "CTO",
+                        company: "Neatflo",
+                        photo: "jess",
+                        raised: "$0",
+                        role: "Engineer",
+                        bio: "Building productivity tools with AI."
+                    )
                 ),
                 Opportunity(
                     title: "Co-Founder Needed",
                     company: "EyeAeon",
                     summary: "Building AI detection layers for mobile apps",
                     matchStrength: 0.92,
-                    timestamp: Date()
+                    timestamp: Date(),
+                    profile: Profile(
+                        name: "David Alvarez",
+                        title: "Founder",
+                        company: "EyeAeon",
+                        photo: "david",
+                        raised: "$500K",
+                        role: "Founder",
+                        bio: "Visionary behind AI-powered detection for everyday users."
+                    )
                 )
             ]
             self.isLoading = false
         }
     }
 }
+
 
 

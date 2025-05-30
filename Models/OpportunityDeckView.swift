@@ -10,11 +10,42 @@ import SwiftUI
 @available(iOS 17.0, *)
 struct OpportunityDeckView: View {
     @State private var opportunities: [Opportunity] = [
-        Opportunity(title: "Seed Funding", company: "Neatflo", summary: "AI for business", matchStrength: 0.9, timestamp: Date()),
-        Opportunity(title: "Series A", company: "TechLift", summary: "ML Scaling", matchStrength: 0.8, timestamp: Date())
+        Opportunity(
+            title: "Seed Funding",
+            company: "Neatflo",
+            summary: "AI for business",
+            matchStrength: 0.9,
+            timestamp: Date(),
+            profile: Profile(
+                name: "Jess Wong",
+                title: "CTO",
+                company: "Neatflo",
+                photo: "jess",
+                raised: "$0",
+                role: "Engineer",
+                bio: "Building productivity tools with AI."
+            )
+        ),
+        Opportunity(
+            title: "Series A",
+            company: "TechLift",
+            summary: "ML Scaling",
+            matchStrength: 0.8,
+            timestamp: Date(),
+            profile: Profile(
+                name: "Sarah Kim",
+                title: "Partner",
+                company: "Future Fund",
+                photo: "sarah",
+                raised: "$30M",
+                role: "Angel Investor",
+                bio: "Invests in early-stage tech startups."
+            )
+        )
     ]
+    
     @StateObject private var profileVM = ProfileCardViewModel()
-
+    
     var body: some View {
         ZStack {
             if opportunities.isEmpty {
@@ -22,42 +53,26 @@ struct OpportunityDeckView: View {
                     .font(.headline)
                     .foregroundColor(.gray)
             } else {
-                ForEach(opportunities.indices.reversed(), id: \.self) { index in
-                    SwipeableCardView(
-                        content: {
-                            let opportunity = opportunities[index]
-
-                            switch opportunity.title {
-                            case "Seed Funding":
-                                return AnyView(ProfileCardView(profiles: profileVM.investorProfiles))
-                            case "Series A":
-                                return AnyView(ProfileCardView(profiles: profileVM.coFounderProfiles))
-                            default:
-                                return AnyView(Text("Details not available"))
-                            }
-                        },
-                        onSwipeLeft: { removeCard(at: index) },
-                        onSwipeRight: { removeCard(at: index) }
+                ForEach(opportunities.reversed(), id: \.id) { opportunity in
+                    SwipeCardView(
+                        profile: opportunity.profile,
+                        onRemove: { _, _ in
+                            removeCard(withId: opportunity.id)
+                        }
                     )
                     .padding(.horizontal)
                 }
             }
-
-            Spacer()
         }
         .background(Color(.systemGroupedBackground))
         .ignoresSafeArea(edges: .top)
     }
 
-    // ✅ FIXED: Declared outside the body
-    private func removeCard(at index: Int) {
-        if opportunities.indices.contains(index) {
-            opportunities.remove(at: index)
-        }
+    private func removeCard(withId id: UUID) {
+        opportunities.removeAll { $0.id == id }
     }
 }
 
-// ✅ FIXED PREVIEW
 @available(iOS 17.0, *)
 #Preview {
     OpportunityDeckView()

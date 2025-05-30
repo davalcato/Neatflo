@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@available(iOS 17, *)
 class ProfileViewModel: ObservableObject {
     @Published var investorProfiles: [Profile] = [
         Profile(name: "Sarah Kim", title: "Partner", company: "Future Fund", photo: "sarah", raised: "$30M", role: "Angel Investor", bio: "Invests in early-stage tech startups."),

@@ -14,32 +14,32 @@ import Combine
 final class NeatfloDataService: NeatfloDataServiceProtocol {
     static let shared = NeatfloDataService()
     private let modelContext: ModelContext
-    
+
     private init() {
         self.modelContext = ModelContext(Persistence.shared.container)
         seedInitialDataIfNeeded()
     }
-    
+
     // MARK: - Core Methods
-    
+
     func fetchOpportunities() async throws -> [Opportunity] {
         let descriptor = FetchDescriptor<Opportunity>(
             sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
         )
         return try modelContext.fetch(descriptor)
     }
-    
+
     // MARK: - CRUD Operations
-    
+
     func addOpportunity(_ opportunity: Opportunity) async throws {
         modelContext.insert(opportunity)
         try modelContext.save()
     }
-    
+
     func updateOpportunity(_ opportunity: Opportunity) async throws {
         try modelContext.save()
     }
-    
+
     func deleteOpportunity(id: UUID) async throws {
         let descriptor = FetchDescriptor<Opportunity>(
             predicate: #Predicate { $0.id == id }
@@ -49,9 +49,9 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
             try modelContext.save()
         }
     }
-    
+
     // MARK: - Advanced Queries
-    
+
     func fetchOpportunities(minMatchStrength: Double) async throws -> [Opportunity] {
         let descriptor = FetchDescriptor<Opportunity>(
             predicate: #Predicate { $0.matchStrength >= minMatchStrength },
@@ -59,7 +59,7 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
         )
         return try modelContext.fetch(descriptor)
     }
-    
+
     func fetchRecentOpportunities(limit: Int) async throws -> [Opportunity] {
         var descriptor = FetchDescriptor<Opportunity>(
             sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
@@ -67,44 +67,56 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
         descriptor.fetchLimit = limit
         return try modelContext.fetch(descriptor)
     }
-    
+
     // MARK: - Private Helpers
-    
+
     private func seedInitialDataIfNeeded() {
-        // Check if we already have data
         let descriptor = FetchDescriptor<Opportunity>()
         guard (try? modelContext.fetch(descriptor).isEmpty) == true else { return }
-        
-        // Create sample data
+
+        // Create sample Profile
+        let sampleProfile = Profile(
+            name: "Jordan Smith",
+            title: "Investor",
+            company: "CapitalX",
+            photo: "jordan", // Make sure this exists in Assets
+            raised: "$2.5M",
+            role: "Investor",
+            bio: "Active angel investor with a passion for early-stage startups."
+        )
+
+        // Sample Opportunities
         let sampleOpportunities = [
             Opportunity(
                 title: "Seed Investment",
                 company: "Neatflo Ventures",
                 summary: "Connect with investors for your startup",
                 matchStrength: 0.92,
-                timestamp: Date()
+                timestamp: Date(),
+                profile: sampleProfile
             ),
             Opportunity(
                 title: "Technical Partner",
                 company: "Founder Network",
                 summary: "Find your technical co-founder",
                 matchStrength: 0.88,
-                timestamp: Date().addingTimeInterval(-86400)
+                timestamp: Date().addingTimeInterval(-86400),
+                profile: sampleProfile
             )
         ]
-        
-        // Insert and save
+
         sampleOpportunities.forEach { modelContext.insert($0) }
         try? modelContext.save()
     }
 }
 
 // MARK: - Persistence Configuration
+
 @available(iOS 17, *)
 struct Persistence {
     static let shared = Persistence()
     let container: ModelContainer
-    
+
     init() {
         do {
             container = try ModelContainer(
@@ -119,3 +131,4 @@ struct Persistence {
         }
     }
 }
+

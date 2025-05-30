@@ -15,15 +15,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     static var sharedModelContainer: ModelContainer = {
         do {
             return try ModelContainer(
-                for: Opportunity.self,
+                for: Opportunity.self, Profile.self, // 👈 Add Profile.self here
                 configurations: ModelConfiguration(isStoredInMemoryOnly: false)
             )
         } catch {
             fatalError("❌ Failed to initialize Neatflo's data storage: \(error)")
         }
     }()
+}
 
-    func application(
+
+@MainActor func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
@@ -51,6 +53,17 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         
         let fetchRequest = FetchDescriptor<Opportunity>()
         guard (try? context.fetch(fetchRequest).isEmpty) == true else { return }
+
+        // Sample profile to use in mock opportunities
+        let sampleProfile = Profile(
+            name: "Jess Wong",
+            title: "Startup Mentor",
+            company: "Elevate Labs",
+            photo: "Jess Wong", // Make sure this image exists in your Assets
+            raised: "$1.2M",
+            role: "Mentor",
+            bio: "Helping startups scale and secure early investments."
+        )
         
         let mockOpportunities = [
             Opportunity(
@@ -58,14 +71,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 company: "Capital Partners",
                 summary: "Connect with seed-stage investors",
                 matchStrength: 0.88,
-                timestamp: Date()
+                timestamp: Date(),
+                profile: sampleProfile
             ),
             Opportunity(
                 title: "Technical Co-founder",
                 company: "Founder Network",
                 summary: "Meet potential technical partners",
                 matchStrength: 0.91,
-                timestamp: Date().addingTimeInterval(-86400)
+                timestamp: Date().addingTimeInterval(-86400),
+                profile: sampleProfile
             )
         ]
         
@@ -91,7 +106,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             print("⚠️ Neatflo reset failed: \(error)")
         }
     }
-}
+
+
 
 
 

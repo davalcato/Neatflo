@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @available(iOS 17, *)
 struct OpportunityCard<Destination: View>: View {
@@ -69,7 +70,6 @@ struct OpportunityCard<Destination: View>: View {
                         }
                 )
 
-                // ✅ NavigationLink triggered only from button
                 NavigationLink(destination: destination(), isActive: $navigate) {
                     EmptyView()
                 }
@@ -83,23 +83,45 @@ struct OpportunityCard<Destination: View>: View {
     }
 }
 
-
+// MARK: - Preview
 @available(iOS 17.0, *)
 #Preview {
+    // Create an in-memory configuration correctly
+    let config = ModelConfiguration(isStoredInMemoryOnly: true)
+    let container = try! ModelContainer(
+        for: Opportunity.self,
+        configurations: config
+    )
+
+    let profile = Profile(
+        name: "Jess Wong",
+        title: "CTO",
+        company: "Neatflo",
+        photo: "Jess Wong",
+        raised: "$1.2B",
+        role: "Engineer",
+        bio: "Building productivity tools with AI."
+    )
+
+    let opportunity = Opportunity(
+        title: "Seed Funding",
+        company: "Neatflo",
+        summary: "AI for business",
+        matchStrength: 0.92,
+        timestamp: Date(),
+        profile: profile
+    )
+
     OpportunityCard(
-        opportunity: Opportunity(
-            title: "Seed Funding",
-            company: "Neatflo Ventures",
-            summary: "AI for business automation",
-            matchStrength: 0.92,
-            timestamp: Date()
-        ),
+        opportunity: opportunity,
         destination: {
             Text("Preview Destination")
         }
     )
     .padding()
+    .modelContainer(container)
 }
+
 
 
 

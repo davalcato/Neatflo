@@ -81,30 +81,43 @@ struct OpportunityRow: View {
 // MARK: - Preview
 #Preview {
     if #available(iOS 17, *) {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try! ModelContainer(
-            for: Opportunity.self,
-            configurations: config
-        )
-        
-        let testOpportunity = Opportunity(
-            title: "Seed Funding",
-            company: "Neatflo Ventures",
-            summary: "Preview opportunity data",
-            matchStrength: 0.85,
-            timestamp: Date()
-        )
-        
-        DispatchQueue.main.async {
+        do {
+            let config = ModelConfiguration(isStoredInMemoryOnly: true)
+            let container = try ModelContainer(
+                for: Opportunity.self,
+                configurations: config
+            )
+
+            let testProfile = Profile(
+                name: "Taylor Reid",
+                title: "Startup Mentor",
+                company: "Seed Ventures",
+                photo: "taylor",
+                raised: "$2M",
+                role: "Advisor",
+                bio: "Experienced startup mentor and early-stage investor."
+            )
+
+            let testOpportunity = Opportunity(
+                title: "Seed Funding",
+                company: "Neatflo Ventures",
+                summary: "Preview opportunity data",
+                matchStrength: 0.85,
+                timestamp: Date(),
+                profile: testProfile
+            )
+
             container.mainContext.insert(testOpportunity)
-        }
-        
-        return AnyView(
-            OpportunityListView()
+
+            return OpportunityListView()
                 .modelContainer(container)
-        )
+        } catch {
+            return Text("Failed to set up preview: \(error.localizedDescription)")
+                .foregroundColor(.red)
+        }
     } else {
-        // Empty view for older iOS versions
-        return AnyView(Text("Preview requires iOS 17+"))
+        return Text("Preview requires iOS 17+")
     }
 }
+
+

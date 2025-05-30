@@ -73,20 +73,32 @@ final class NeatfloDataManager {
     
     // MARK: - Private Helpers
     private func insertMockOpportunities() {
+        let mockProfile = Profile(
+            name: "Taylor Reid",
+            title: "Startup Mentor",
+            company: "Seed Ventures",
+            photo: "taylor", // Ensure this image is in your asset catalog
+            raised: "$2M",
+            role: "Advisor",
+            bio: "Experienced startup mentor and early-stage investor."
+        )
+        
         let mockOpportunities = [
             Opportunity(
                 title: "Investor Introduction",
                 company: "Seed Ventures",
                 summary: "Connect with angel investors in your industry",
                 matchStrength: 0.85,
-                timestamp: Date()
+                timestamp: Date(),
+                profile: mockProfile
             ),
             Opportunity(
                 title: "Co-Founder Match",
                 company: "Founder Network",
                 summary: "Meet potential technical co-founders",
                 matchStrength: 0.92,
-                timestamp: Date().addingTimeInterval(-86400)
+                timestamp: Date().addingTimeInterval(-86400),
+                profile: mockProfile
             )
         ]
         

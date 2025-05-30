@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 struct SwipeableProfileView: View {
     let profiles: [Profile]
     @State private var currentIndex: Int = 0
@@ -44,7 +45,8 @@ struct SwipeableProfileView: View {
         }
     }
 
-    private func profileCard(for profile: Profile) -> some View {
+@available(iOS 17, *)
+private func profileCard(for profile: Profile) -> some View {
         ZStack(alignment: .bottomLeading) {
             profileImage(named: profile.photo)
                 .resizable()
@@ -85,34 +87,38 @@ struct SwipeableProfileView: View {
     }
 
 #Preview {
-    SwipeableProfileView(profiles: [
-        Profile(
-            name: "Jess Wong",
-            title: "CTO",
-            company: "Neatflo",
-            photo: "Jess Wong",
-            raised: "$5M",
-            role: "Co-Founder",
-            bio: "Tech lead at Neatflo."
-        ),
-        Profile(
-            name: "Dave Patel",
-            title: "CEO",
-            company: "StartIQ",
-            photo: "Dave Patel",
-            raised: "$12M",
-            role: "Co-Founder",
-            bio: "Serial founder and operator."
-        ),
-        Profile(
-            name: "Zoe Li",
-            title: "CMO",
-            company: "Glow",
-            photo: "Zoe Li",
-            raised: "$3M",
-            role: "Co-Founder",
-            bio: "Growth marketing expert."
-        )
-    ])
+    if #available(iOS 17, *) {
+        SwipeableProfileView(profiles: [
+            Profile(
+                name: "Jess Wong",
+                title: "CTO",
+                company: "Neatflo",
+                photo: "Jess Wong",
+                raised: "$5M",
+                role: "Co-Founder",
+                bio: "Tech lead at Neatflo."
+            ),
+            Profile(
+                name: "Dave Patel",
+                title: "CEO",
+                company: "StartIQ",
+                photo: "Dave Patel",
+                raised: "$12M",
+                role: "Co-Founder",
+                bio: "Serial founder and operator."
+            ),
+            Profile(
+                name: "Zoe Li",
+                title: "CMO",
+                company: "Glow",
+                photo: "Zoe Li",
+                raised: "$3M",
+                role: "Co-Founder",
+                bio: "Growth marketing expert."
+            )
+        ])
+    } else {
+        // Fallback on earlier versions
+    }
 }
 

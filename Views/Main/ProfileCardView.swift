@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+@available(iOS 17, *)
 struct ProfileCardView: View {
     let profiles: [Profile]
 
@@ -58,11 +59,15 @@ struct ProfileCardView: View {
 }
 
 #Preview {
-    ProfileCardView(profiles: [
-        Profile(name: "Jess Wong", title: "CTO", company: "Neatflo", photo: "Jess Wong", raised: "$5M", role: "Co-Founder", bio: "Tech lead at Neatflo."),
-        Profile(name: "Sarah Kim", title: "Partner", company: "Future Fund", photo: "sarah", raised: "$30M", role: "Angel Investor", bio: "Invests in early-stage startups."),
-        Profile(name: "Tom Lee", title: "Angel", company: "SkyInvest", photo: "tom", raised: "$10M", role: "Angel Investor", bio: "AI & web3 angel.")
-    ])
+    if #available(iOS 17, *) {
+        ProfileCardView(profiles: [
+            Profile(name: "Jess Wong", title: "CTO", company: "Neatflo", photo: "Jess Wong", raised: "$5M", role: "Co-Founder", bio: "Tech lead at Neatflo."),
+            Profile(name: "Sarah Kim", title: "Partner", company: "Future Fund", photo: "sarah", raised: "$30M", role: "Angel Investor", bio: "Invests in early-stage startups."),
+            Profile(name: "Tom Lee", title: "Angel", company: "SkyInvest", photo: "tom", raised: "$10M", role: "Angel Investor", bio: "AI & web3 angel.")
+        ])
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 

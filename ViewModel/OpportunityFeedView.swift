@@ -12,7 +12,7 @@ struct OpportunityFeedView: View {
     @State private var opportunities: [Opportunity] = []
     @State private var isLoading = false
     @StateObject private var profileVM = ProfileCardViewModel()
-
+    
     var body: some View {
         NavigationStack {
             Group {
@@ -45,7 +45,7 @@ struct OpportunityFeedView: View {
             await loadData()
         }
     }
-
+    
     // MARK: - Destination View
     @ViewBuilder
     private func destinationView(for opportunity: Opportunity) -> some View {
@@ -58,26 +58,49 @@ struct OpportunityFeedView: View {
             Text("Details not available")
         }
     }
-
+    
     // MARK: - Data Load
     private func loadData() async {
         isLoading = true
         try? await Task.sleep(nanoseconds: 1_000_000_000) // Simulate loading
+        
         opportunities = [
-            Opportunity(title: "Investor Intro", company: "Neatflo", summary: "AI for business", matchStrength: 0.9, timestamp: Date()),
-            Opportunity(title: "Co-Founder Match", company: "TechLift", summary: "ML Scaling", matchStrength: 0.8, timestamp: Date())
+            Opportunity(
+                title: "Investor Intro",
+                company: "Neatflo",
+                summary: "AI for business",
+                matchStrength: 0.9,
+                timestamp: Date(),
+                profile: Opportunity.matchProfile(for: "Neatflo")
+            ),
+            Opportunity(
+                title: "Co-Founder Match",
+                company: "TechLift",
+                summary: "ML Scaling",
+                matchStrength: 0.8,
+                timestamp: Date(),
+                profile: Opportunity.matchProfile(for: "TechLift")
+            )
         ]
+        
         isLoading = false
     }
-
+    
     // MARK: - Add Mock
     private func addMockData() {
         opportunities.append(
-            Opportunity(title: "Investor Intro", company: "NewCo", summary: "New opportunity", matchStrength: 0.7, timestamp: Date())
+            Opportunity(
+                title: "Investor Intro",
+                company: "NewCo",
+                summary: "New opportunity",
+                matchStrength: 0.7,
+                timestamp: Date(),
+                profile: Opportunity.matchProfile(for: "NewCo")
+            )
         )
     }
+    
 }
-
 
 
 
