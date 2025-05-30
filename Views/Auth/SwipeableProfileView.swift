@@ -19,7 +19,7 @@ struct SwipeableProfileView: View {
             ForEach(Array(profiles.enumerated()), id: \.1.id) { index, profile in
                 GeometryReader { geometry in
                     ZStack {
-                        // Background Image
+                        // Background Image with gradient overlay
                         Image(profile.photo)
                             .resizable()
                             .scaledToFill()
@@ -30,7 +30,7 @@ struct SwipeableProfileView: View {
                                 LinearGradient(
                                     gradient: Gradient(colors: [Color.black.opacity(0.5), Color.clear]),
                                     startPoint: .bottom,
-                                    endPoint: .center
+                                    endPoint: .top
                                 )
                                 .cornerRadius(20)
                             )
@@ -58,24 +58,27 @@ struct SwipeableProfileView: View {
                             )
                             .animation(.easeInOut, value: dragOffset)
 
-                        // Conditional Thumbs Icon
-                        ZStack {
-                            if abs(dragOffset.width) > 20 {
-                                Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 60, height: 60)
-                                    .padding()
-                                    .background(dragOffset.width > 0 ? Color.green : Color.red)
-                                    .clipShape(Circle())
-                                    .shadow(radius: 10)
-                                    .offset(dragOffset)
-                                    .transition(.scale)
-                                    .animation(.easeInOut, value: dragOffset)
-                            }
+                        // Calculate drag-based opacity (max 1.0)
+                        let dragAmount = abs(dragOffset.width)
+                        let maxDrag: CGFloat = 150 // Cap distance to normalize opacity
+                        let iconOpacity = min(dragAmount / maxDrag, 1.0)
+
+                        // Conditional Thumbs Icon with opacity
+                        if dragAmount > 20 {
+                            Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 60, height: 60)
+                                .padding()
+                                .background(dragOffset.width > 0 ? Color.green : Color.red)
+                                .clipShape(Circle())
+                                .shadow(radius: 10)
+                                .offset(dragOffset) // Moves with the image
+                                .opacity(iconOpacity) // Gradually increases with drag
+                                .animation(.easeInOut, value: dragOffset)
                         }
 
-                        // Text content at bottom left
+                        // Text content at the bottom left
                         VStack(alignment: .leading, spacing: 4) {
                             Spacer()
                             Text(profile.name)
@@ -105,6 +108,7 @@ struct SwipeableProfileView: View {
         .navigationTitle("Profile")
     }
 }
+
 
 
 
