@@ -17,7 +17,8 @@ struct SwipeableProfileView: View {
         TabView {
             ForEach(profiles) { profile in
                 GeometryReader { geometry in
-                    ZStack(alignment: .bottomLeading) {
+                    ZStack {
+                        // Background Image
                         Image(profile.photo)
                             .resizable()
                             .scaledToFill()
@@ -46,7 +47,26 @@ struct SwipeableProfileView: View {
                             )
                             .animation(.easeInOut, value: dragOffset)
 
+                        // Conditional Icon Overlay
+                        if abs(dragOffset.width) > 20 {
+                            VStack {
+                                Spacer()
+                                Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .padding()
+                                    .background(dragOffset.width > 0 ? Color.green : Color.red)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 10)
+                                Spacer()
+                            }
+                            .transition(.opacity)
+                        }
+
+                        // Bottom Text
                         VStack(alignment: .leading, spacing: 4) {
+                            Spacer()
                             Text(profile.name)
                                 .font(.title)
                                 .bold()
@@ -62,6 +82,7 @@ struct SwipeableProfileView: View {
                         }
                         .foregroundColor(.white)
                         .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     .frame(width: geometry.size.width, height: geometry.size.height)
                 }
@@ -72,8 +93,6 @@ struct SwipeableProfileView: View {
         .navigationTitle("Profile")
     }
 }
-
-
 
 
 @available(iOS 17, *)
