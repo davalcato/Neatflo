@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UIKit
 
 @available(iOS 17, *)
 struct SwipeableProfileView: View {
@@ -14,11 +15,11 @@ struct SwipeableProfileView: View {
     @State private var dragOffset: CGSize = .zero
 
     var body: some View {
-        TabView {
-            ForEach(profiles) { profile in
+        TabView(selection: $currentIndex) {
+            ForEach(Array(profiles.enumerated()), id: \.1.id) { index, profile in
                 GeometryReader { geometry in
                     ZStack {
-                        // Background Image with drag gesture
+                        // Background Image
                         Image(profile.photo)
                             .resizable()
                             .scaledToFill()
@@ -27,9 +28,9 @@ struct SwipeableProfileView: View {
                             .cornerRadius(20)
                             .overlay(
                                 LinearGradient(
-                                    gradient: Gradient(colors: [Color.black.opacity(0.6), Color.clear]),
+                                    gradient: Gradient(colors: [Color.black.opacity(0.5), Color.clear]),
                                     startPoint: .bottom,
-                                    endPoint: .top
+                                    endPoint: .center
                                 )
                                 .cornerRadius(20)
                             )
@@ -39,35 +40,42 @@ struct SwipeableProfileView: View {
                                     .onChanged { value in
                                         dragOffset = value.translation
                                     }
-                                    .onEnded { _ in
+                                    .onEnded { value in
+                                        let threshold: CGFloat = 100
+                                        let generator = UIImpactFeedbackGenerator(style: .medium)
+
                                         withAnimation(.spring()) {
+                                            if value.translation.width < -threshold && currentIndex < profiles.count - 1 {
+                                                currentIndex += 1
+                                                generator.impactOccurred()
+                                            } else if value.translation.width > threshold && currentIndex > 0 {
+                                                currentIndex -= 1
+                                                generator.impactOccurred()
+                                            }
                                             dragOffset = .zero
                                         }
                                     }
                             )
                             .animation(.easeInOut, value: dragOffset)
 
-                        // Calculate drag-based opacity (max 1.0)
-                        let dragAmount = abs(dragOffset.width)
-                        let maxDrag: CGFloat = 150 // Cap distance to normalize opacity
-                        let iconOpacity = min(dragAmount / maxDrag, 1.0)
-
-                        if dragAmount > 20 {
-                            Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60)
-                                .padding()
-                                .background(dragOffset.width > 0 ? Color.green : Color.red)
-                                .clipShape(Circle())
-                                .shadow(radius: 10)
-                                .offset(dragOffset) // Moves with the image
-                                .opacity(iconOpacity) // Gradually increases with drag
-                                .animation(.easeInOut, value: dragOffset)
+                        // Conditional Thumbs Icon
+                        ZStack {
+                            if abs(dragOffset.width) > 20 {
+                                Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .padding()
+                                    .background(dragOffset.width > 0 ? Color.green : Color.red)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 10)
+                                    .offset(dragOffset)
+                                    .transition(.scale)
+                                    .animation(.easeInOut, value: dragOffset)
+                            }
                         }
 
-
-                        // Text content at the bottom left
+                        // Text content at bottom left
                         VStack(alignment: .leading, spacing: 4) {
                             Spacer()
                             Text(profile.name)
@@ -90,12 +98,14 @@ struct SwipeableProfileView: View {
                     .frame(width: geometry.size.width, height: geometry.size.height)
                 }
                 .padding(.vertical)
+                .tag(index)
             }
         }
-        .tabViewStyle(PageTabViewStyle())
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
         .navigationTitle("Profile")
     }
 }
+
 
 
 @available(iOS 17, *)
