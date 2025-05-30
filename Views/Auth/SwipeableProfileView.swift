@@ -47,8 +47,12 @@ struct SwipeableProfileView: View {
                             )
                             .animation(.easeInOut, value: dragOffset)
 
-                        // Conditional Icon (moving with drag)
-                        if abs(dragOffset.width) > 20 {
+                        // Calculate drag-based opacity (max 1.0)
+                        let dragAmount = abs(dragOffset.width)
+                        let maxDrag: CGFloat = 150 // Cap distance to normalize opacity
+                        let iconOpacity = min(dragAmount / maxDrag, 1.0)
+
+                        if dragAmount > 20 {
                             Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
                                 .resizable()
                                 .scaledToFit()
@@ -57,9 +61,11 @@ struct SwipeableProfileView: View {
                                 .background(dragOffset.width > 0 ? Color.green : Color.red)
                                 .clipShape(Circle())
                                 .shadow(radius: 10)
-                                .offset(dragOffset) // Move with the image
+                                .offset(dragOffset) // Moves with the image
+                                .opacity(iconOpacity) // Gradually increases with drag
                                 .animation(.easeInOut, value: dragOffset)
                         }
+
 
                         // Text content at the bottom left
                         VStack(alignment: .leading, spacing: 4) {
