@@ -11,39 +11,53 @@ import SwiftUI
 struct SwipeableProfileView: View {
     let profiles: [Profile]
     @State private var currentIndex: Int = 0
+    @State private var dragOffsets: [UUID: CGSize] = [:]
 
     var body: some View {
-            TabView {
-                ForEach(profiles) { profile in
-                    VStack(spacing: 16) {
-                        Image(profile.photo)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(height: 300)
-                            .clipShape(RoundedRectangle(cornerRadius: 20))
+        TabView {
+            ForEach(profiles) { profile in
+                VStack(spacing: 16) {
+                    Image(profile.photo)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 300)
+                        .clipShape(RoundedRectangle(cornerRadius: 20))
+                        .offset(dragOffsets[profile.id] ?? .zero)
+                        .gesture(
+                            DragGesture()
+                                .onChanged { value in
+                                    dragOffsets[profile.id] = value.translation
+                                }
+                                .onEnded { _ in
+                                    withAnimation(.spring()) {
+                                        dragOffsets[profile.id] = .zero
+                                    }
+                                }
+                        )
 
-                        Text(profile.name)
-                            .font(.title)
-                            .bold()
+                    Text(profile.name)
+                        .font(.title)
+                        .bold()
 
-                        Text("\(profile.title) at \(profile.company)")
-                            .font(.subheadline)
+                    Text("\(profile.title) at \(profile.company)")
+                        .font(.subheadline)
 
-                        Text("Raised: \(profile.raised)")
-                            .font(.subheadline)
+                    Text("Raised: \(profile.raised)")
+                        .font(.subheadline)
 
-                        Text(profile.bio)
-                            .font(.body)
-                            .multilineTextAlignment(.center)
-                            .padding(.horizontal)
-                    }
-                    .padding()
+                    Text(profile.bio)
+                        .font(.body)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
                 }
+                .padding()
             }
-            .tabViewStyle(PageTabViewStyle())
-            .navigationTitle("Profile")
         }
+        .tabViewStyle(PageTabViewStyle())
+        .navigationTitle("Profile")
     }
+}
+
 
 @available(iOS 17, *)
 private func profileCard(for profile: Profile) -> some View {
