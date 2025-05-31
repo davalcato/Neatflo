@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import UIKit
+import AVFoundation
 
 @available(iOS 17, *)
 struct SwipeableProfileView: View {
@@ -15,13 +15,14 @@ struct SwipeableProfileView: View {
     @State private var currentIndex: Int = 0
     @State private var dragOffset: CGSize = .zero
     @State private var dismissed: Bool = false
+    @State private var showDetail: Bool = false
+    @State private var selectedProfile: Profile?
+    @State private var player: AVAudioPlayer?
 
     var body: some View {
         ZStack {
-            // Background
             Color.black.ignoresSafeArea()
 
-            // Profile cards
             ForEach(Array(profiles.enumerated().reversed()), id: \.1.id) { index, profile in
                 if index >= currentIndex {
                     GeometryReader { geometry in
@@ -52,6 +53,10 @@ struct SwipeableProfileView: View {
                                 .opacity(dismissed && isTopCard ? 0 : 1)
                                 .animation(.spring(response: 0.4, dampingFraction: 0.75), value: dragOffset)
                                 .animation(.easeOut(duration: 0.3), value: dismissed)
+                                .onTapGesture {
+                                    selectedProfile = profile
+                                    showDetail = true
+                                }
                                 .gesture(
                                     isTopCard ? DragGesture()
                                         .onChanged { value in
@@ -61,6 +66,7 @@ struct SwipeableProfileView: View {
                                             let threshold: CGFloat = 100
                                             withAnimation(.spring()) {
                                                 if value.translation.width < -threshold && currentIndex < profiles.count - 1 {
+                                                    playSound()
                                                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                                     dismissed = true
                                                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
@@ -69,6 +75,7 @@ struct SwipeableProfileView: View {
                                                         dismissed = false
                                                     }
                                                 } else if value.translation.width > threshold && currentIndex > 0 {
+                                                    playSound()
                                                     UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                                     currentIndex -= 1
                                                     dragOffset = .zero
@@ -80,7 +87,6 @@ struct SwipeableProfileView: View {
                                     : nil
                                 )
 
-                            // Swipe icon
                             if isTopCard && abs(dragOffset.width) > 20 {
                                 Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
                                     .resizable()
@@ -95,7 +101,6 @@ struct SwipeableProfileView: View {
                                     .animation(.easeInOut, value: dragOffset)
                             }
 
-                            // Text info
                             VStack(alignment: .leading, spacing: 4) {
                                 Spacer()
                                 Text(profile.name)
@@ -140,11 +145,21 @@ struct SwipeableProfileView: View {
                 Spacer()
             }
         }
+        .fullScreenCover(item: $selectedProfile) { profile in
+            ProfileDetailView(profile: profile)
+        }
+    }
+
+    func playSound() {
+        guard let url = Bundle.main.url(forResource: "flip", withExtension: "mp3") else { return }
+        do {
+            player = try AVAudioPlayer(contentsOf: url)
+            player?.play()
+        } catch {
+            print("Sound playback failed")
+        }
     }
 }
-
-
-
 
 
 @available(iOS 17, *)

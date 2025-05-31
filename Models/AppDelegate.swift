@@ -9,23 +9,40 @@ import UIKit
 import SwiftUI
 import SwiftData
 
+//@main
+//struct NeatfloApp: App {
+//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+//
+//    var body: some Scene {
+//        WindowGroup {
+//            if #available(iOS 17.0, *) {
+//                ContentView()
+//                    .modelContainer(AppDelegate.sharedModelContainer)
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }
+//    }
+//}
+
 class AppDelegate: NSObject, UIApplicationDelegate {
+    
     // MARK: - SwiftData Setup
     @available(iOS 17, *)
     static var sharedModelContainer: ModelContainer = {
         do {
             return try ModelContainer(
-                for: Opportunity.self, Profile.self, // 👈 Add Profile.self here
+                for: Opportunity.self, Profile.self, // 👈 Include all your models
                 configurations: ModelConfiguration(isStoredInMemoryOnly: false)
             )
         } catch {
             fatalError("❌ Failed to initialize Neatflo's data storage: \(error)")
         }
     }()
-}
-
-
-@MainActor func application(
+    
+    // MARK: - App Launch
+    @MainActor
+    func application(
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
@@ -35,7 +52,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     }
 
     // MARK: - First Run Setup
-    @MainActor private func initializeFirstRunData() {
+    @MainActor
+    private func initializeFirstRunData() {
         let defaults = UserDefaults.standard
         
         if !defaults.bool(forKey: "neatfloHasLaunchedBefore") {
@@ -47,24 +65,25 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
 
-    @MainActor @available(iOS 17, *)
+    // MARK: - Mock Data Seeder
+    @MainActor
+    @available(iOS 17, *)
     private func seedInitialOpportunities() {
         let context = AppDelegate.sharedModelContainer.mainContext
         
         let fetchRequest = FetchDescriptor<Opportunity>()
         guard (try? context.fetch(fetchRequest).isEmpty) == true else { return }
 
-        // Sample profile to use in mock opportunities
         let sampleProfile = Profile(
             name: "Jess Wong",
             title: "Startup Mentor",
             company: "Elevate Labs",
-            photo: "Jess Wong", // Make sure this image exists in your Assets
+            photo: "Jess Wong", // Make sure this image is in Assets.xcassets
             raised: "$1.2M",
             role: "Mentor",
             bio: "Helping startups scale and secure early investments."
         )
-        
+
         let mockOpportunities = [
             Opportunity(
                 title: "Investor Match",
@@ -93,8 +112,9 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         }
     }
 
-    // MARK: - Debug Tool
-    @MainActor @available(iOS 17, *)
+    // MARK: - Debug Tool: Reset All Data
+    @MainActor
+    @available(iOS 17, *)
     func resetAllData() {
         let context = AppDelegate.sharedModelContainer.mainContext
         
@@ -106,6 +126,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
             print("⚠️ Neatflo reset failed: \(error)")
         }
     }
+}
+
 
 
 
