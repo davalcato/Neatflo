@@ -15,99 +15,102 @@ struct SwipeableProfileView: View {
     @State private var dragOffset: CGSize = .zero
 
     var body: some View {
-        TabView(selection: $currentIndex) {
-            ForEach(Array(profiles.enumerated()), id: \.1.id) { index, profile in
-                GeometryReader { geometry in
-                    ZStack {
-                        // Background Image with gradient overlay
-                        Image(profile.photo)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: geometry.size.width, height: geometry.size.height)
-                            .clipped()
-                            .cornerRadius(20)
-                            .overlay(
-                                LinearGradient(
-                                    gradient: Gradient(colors: [Color.black.opacity(0.5), Color.clear]),
-                                    startPoint: .bottom,
-                                    endPoint: .top
-                                )
-                                .cornerRadius(20)
-                            )
-                            .offset(dragOffset)
-                            .gesture(
-                                DragGesture()
-                                    .onChanged { value in
-                                        dragOffset = value.translation
-                                    }
-                                    .onEnded { value in
-                                        let threshold: CGFloat = 100
-                                        let generator = UIImpactFeedbackGenerator(style: .medium)
+        ZStack {
+            ForEach(Array(profiles.enumerated().reversed()), id: \.1.id) { index, profile in
+                if index >= currentIndex {
+                    GeometryReader { geometry in
+                        let isTopCard = index == currentIndex
+                        let dragAmount = isTopCard ? dragOffset.width : 0
+                        let maxDrag: CGFloat = 150
+                        let iconOpacity = min(abs(dragAmount) / maxDrag, 1.0)
+                        let rotationAngle = Angle(degrees: Double(dragAmount / 15))
 
-                                        withAnimation(.spring()) {
-                                            if value.translation.width < -threshold && currentIndex < profiles.count - 1 {
-                                                currentIndex += 1
-                                                generator.impactOccurred()
-                                            } else if value.translation.width > threshold && currentIndex > 0 {
-                                                currentIndex -= 1
-                                                generator.impactOccurred()
-                                            }
-                                            dragOffset = .zero
-                                        }
-                                    }
-                            )
-                            .animation(.easeInOut, value: dragOffset)
-
-                        // Calculate drag-based opacity (max 1.0)
-                        let dragAmount = abs(dragOffset.width)
-                        let maxDrag: CGFloat = 150 // Cap distance to normalize opacity
-                        let iconOpacity = min(dragAmount / maxDrag, 1.0)
-
-                        // Conditional Thumbs Icon with opacity
-                        if dragAmount > 20 {
-                            Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
+                        ZStack {
+                            Image(profile.photo)
                                 .resizable()
-                                .scaledToFit()
-                                .frame(width: 60, height: 60)
-                                .padding()
-                                .background(dragOffset.width > 0 ? Color.green : Color.red)
-                                .clipShape(Circle())
+                                .scaledToFill()
+                                .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.8)
+                                .cornerRadius(20)
                                 .shadow(radius: 10)
-                                .offset(dragOffset) // Moves with the image
-                                .opacity(iconOpacity) // Gradually increases with drag
-                                .animation(.easeInOut, value: dragOffset)
+                                .overlay(
+                                    LinearGradient(
+                                        gradient: Gradient(colors: [Color.black.opacity(0.6), Color.clear]),
+                                        startPoint: .bottom,
+                                        endPoint: .top
+                                    )
+                                    .cornerRadius(20)
+                                )
+                                .offset(x: isTopCard ? dragOffset.width : 0, y: isTopCard ? dragOffset.height : CGFloat(index - currentIndex) * 10)
+                                .rotation3DEffect(isTopCard ? rotationAngle : .zero, axis: (x: 0, y: 1, z: 0))
+                                .scaleEffect(isTopCard ? 1.0 : 0.95)
+                                .animation(.spring(response: 0.4, dampingFraction: 0.75), value: dragOffset)
+                                .gesture(
+                                    isTopCard ? DragGesture()
+                                        .onChanged { value in
+                                            dragOffset = value.translation
+                                        }
+                                        .onEnded { value in
+                                            let threshold: CGFloat = 100
+                                            let generator = UIImpactFeedbackGenerator(style: .medium)
+                                            withAnimation(.spring()) {
+                                                if value.translation.width < -threshold && currentIndex < profiles.count - 1 {
+                                                    currentIndex += 1
+                                                    generator.impactOccurred()
+                                                } else if value.translation.width > threshold && currentIndex > 0 {
+                                                    currentIndex -= 1
+                                                    generator.impactOccurred()
+                                                }
+                                                dragOffset = .zero
+                                            }
+                                        }
+                                    : nil
+                                )
+
+                            if isTopCard && abs(dragOffset.width) > 20 {
+                                Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(width: 60, height: 60)
+                                    .padding()
+                                    .background(dragOffset.width > 0 ? Color.green : Color.red)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 10)
+                                    .offset(dragOffset)
+                                    .opacity(iconOpacity)
+                                    .animation(.easeInOut, value: dragOffset)
+                            }
+
+                            // Text overlay
+                            VStack(alignment: .leading, spacing: 4) {
+                                Spacer()
+                                Text(profile.name)
+                                    .font(.title)
+                                    .bold()
+
+                                Text("\(profile.title) at \(profile.company)")
+                                    .font(.subheadline)
+
+                                Text("Raised: \(profile.raised)")
+                                    .font(.subheadline)
+
+                                Text(profile.bio)
+                                    .font(.body)
+                            }
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
                         }
-
-                        // Text content at the bottom left
-                        VStack(alignment: .leading, spacing: 4) {
-                            Spacer()
-                            Text(profile.name)
-                                .font(.title)
-                                .bold()
-
-                            Text("\(profile.title) at \(profile.company)")
-                                .font(.subheadline)
-
-                            Text("Raised: \(profile.raised)")
-                                .font(.subheadline)
-
-                            Text(profile.bio)
-                                .font(.body)
-                        }
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .zIndex(Double(profiles.count - index))
                     }
-                    .frame(width: geometry.size.width, height: geometry.size.height)
                 }
-                .padding(.vertical)
-                .tag(index)
             }
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .automatic))
-        .navigationTitle("Profile")
+        .padding()
+        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
 }
+
 
 
 
