@@ -28,22 +28,35 @@ struct FeedView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                // Gradient background
+                LinearGradient(colors: [Color.purple.opacity(0.2), Color.blue.opacity(0.2)], startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+
                 if viewModel.isLoading && viewModel.opportunities.isEmpty {
-                    ProgressView()
+                    ProgressView("Loading...")
                         .scaleEffect(1.5)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .blue))
                 } else {
                     opportunityList
+                        .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
 
                 if let error = viewModel.errorMessage {
                     ErrorView(error: error, onDismiss: { viewModel.errorMessage = nil })
                 }
             }
-            .navigationTitle("Neatflo Matches")
+            .navigationTitle("🎯 Neatflo Matches")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button(action: { showingProfile.toggle() }) {
-                        Image(systemName: "person.circle.fill")
+                        Image(systemName: "person.crop.circle.fill")
+                            .resizable()
+                            .frame(width: 30, height: 30)
+                            .foregroundColor(.blue)
+                            .shadow(radius: 3)
+                            .scaleEffect(showingProfile ? 1.1 : 1.0)
+                            .animation(.spring(response: 0.4, dampingFraction: 0.6), value: showingProfile)
                     }
                 }
             }
@@ -53,7 +66,6 @@ struct FeedView: View {
             .refreshable {
                 await viewModel.refresh()
             }
-            // Navigate to full-screen SwipeableProfileView if "Co-Founder Match" tapped
             .navigationDestination(isPresented: $navigateToSwipeView) {
                 if let opportunity = selectedOpportunity, opportunity.title == "Co-Founder Match" {
                     SwipeableProfileView(profiles: profileVM.coFounderProfiles)
@@ -62,32 +74,44 @@ struct FeedView: View {
         }
     }
 
-    // Opportunity List View
+    // MARK: - Opportunity List View
     private var opportunityList: some View {
-        List {
-            ForEach(viewModel.opportunities, id: \.id) { opportunity in
-                OpportunityCard(opportunity: opportunity) {
-                    Group {
-                        if opportunity.title == "Investor Introduction" {
-                            // Clicking View Details navigates here
-                            ProfileCardView(profiles: profileVM.investorProfiles)
-                        } else if opportunity.title == "Co-Founder Match" {
-                            // Clicking View Details navigates to swipe view
-                            SwipeableProfileView(profiles: profileVM.coFounderProfiles)
-                        } else {
-                            Text("Details not available")
+        ScrollView {
+            LazyVStack(spacing: 20) {
+                ForEach(viewModel.opportunities, id: \.id) { opportunity in
+                    OpportunityCard(opportunity: opportunity) {
+                        Group {
+                            if opportunity.title == "Investor Introduction" {
+                                ProfileCardView(profiles: profileVM.investorProfiles)
+                            } else if opportunity.title == "Co-Founder Match" {
+                                SwipeableProfileView(profiles: profileVM.coFounderProfiles)
+                            } else {
+                                Text("Details not available")
+                            }
                         }
                     }
+                    .background(BlurView(style: .systemMaterial))
+                    .cornerRadius(16)
+                    .shadow(color: .black.opacity(0.1), radius: 10, x: 0, y: 5)
+                    .padding(.horizontal)
+                    .transition(.scale)
                 }
-                .listRowSeparator(.hidden)
-                .listRowBackground(Color.clear)
             }
+            .padding(.top)
         }
-        .listStyle(.plain)
         .animation(.easeInOut, value: viewModel.opportunities)
     }
-
 }
+
+// MARK: - Optional Blur Background Helper
+struct BlurView: UIViewRepresentable {
+    var style: UIBlurEffect.Style
+    func makeUIView(context: Context) -> UIVisualEffectView {
+        return UIVisualEffectView(effect: UIBlurEffect(style: style))
+    }
+    func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
+}
+
 
 // MARK: - Error View
 struct ErrorView: View {
