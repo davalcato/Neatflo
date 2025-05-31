@@ -26,6 +26,9 @@
 		DA572D0D2DE82A3C00371EFA /* SwipeDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D0C2DE82A3C00371EFA /* SwipeDeckView.swift */; };
 		DA572D0F2DE8C08000371EFA /* SampleProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D0E2DE8C08000371EFA /* SampleProfile.swift */; };
 		DA572D112DEA87A700371EFA /* ProfileDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D102DEA87A700371EFA /* ProfileDetailView.swift */; };
+		DA572D132DEAC8EC00371EFA /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D122DEAC8EC00371EFA /* BlurView.swift */; };
+		DA572D152DEAC95400371EFA /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D142DEAC95400371EFA /* ErrorView.swift */; };
+		DA572D172DEAD06B00371EFA /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA572D162DEAD06B00371EFA /* ProfileView.swift */; };
 		DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */; };
 		DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */; };
 		DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */; };
@@ -94,6 +97,9 @@
 		DA572D0C2DE82A3C00371EFA /* SwipeDeckView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeDeckView.swift; sourceTree = "<group>"; };
 		DA572D0E2DE8C08000371EFA /* SampleProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleProfile.swift; sourceTree = "<group>"; };
 		DA572D102DEA87A700371EFA /* ProfileDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailView.swift; sourceTree = "<group>"; };
+		DA572D122DEAC8EC00371EFA /* BlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
+		DA572D142DEAC95400371EFA /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
+		DA572D162DEAD06B00371EFA /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageModifier.swift; sourceTree = "<group>"; };
 		DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
@@ -287,6 +293,7 @@
 				DA572D0A2DE8274700371EFA /* SwipeCardView.swift */,
 				DA572D0C2DE82A3C00371EFA /* SwipeDeckView.swift */,
 				DA572D102DEA87A700371EFA /* ProfileDetailView.swift */,
+				DA572D162DEAD06B00371EFA /* ProfileView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -310,6 +317,8 @@
 				DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */,
 				DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */,
 				DA2A7C432DE107BE0066DAC6 /* CardViewModifier.swift */,
+				DA572D122DEAC8EC00371EFA /* BlurView.swift */,
+				DA572D142DEAC95400371EFA /* ErrorView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -497,7 +506,9 @@
 				DA572D0D2DE82A3C00371EFA /* SwipeDeckView.swift in Sources */,
 				DA45255C2DBDAEA3001AFE0D /* AuthService.swift in Sources */,
 				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,
+				DA572D132DEAC8EC00371EFA /* BlurView.swift in Sources */,
 				DA6498F72DDCFC73009861EB /* OpportunityDeckView.swift in Sources */,
+				DA572D172DEAD06B00371EFA /* ProfileView.swift in Sources */,
 				DA6498F82DDCFC73009861EB /* OpportunitiesViewModel.swift in Sources */,
 				DA6498F92DDCFC73009861EB /* OpportunityFeedView.swift in Sources */,
 				DA6498FA2DDCFC73009861EB /* OpportunityCard.swift in Sources */,
@@ -510,6 +521,7 @@
 				DA572D0F2DE8C08000371EFA /* SampleProfile.swift in Sources */,
 				DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */,
 				DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */,
+				DA572D152DEAC95400371EFA /* ErrorView.swift in Sources */,
 				DA6498FC2DDD006A009861EB /* OpportunitiesView.swift in Sources */,
 				DA4525602DBDAEA3001AFE0D /* AppState.swift in Sources */,
 				DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */,
