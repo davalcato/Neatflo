@@ -11,11 +11,17 @@ import UIKit
 @available(iOS 17, *)
 struct SwipeableProfileView: View {
     let profiles: [Profile]
+    @Environment(\.presentationMode) var presentationMode
     @State private var currentIndex: Int = 0
     @State private var dragOffset: CGSize = .zero
+    @State private var dismissed: Bool = false
 
     var body: some View {
         ZStack {
+            // Background
+            Color.black.ignoresSafeArea()
+
+            // Profile cards
             ForEach(Array(profiles.enumerated().reversed()), id: \.1.id) { index, profile in
                 if index >= currentIndex {
                     GeometryReader { geometry in
@@ -42,8 +48,10 @@ struct SwipeableProfileView: View {
                                 )
                                 .offset(x: isTopCard ? dragOffset.width : 0, y: isTopCard ? dragOffset.height : CGFloat(index - currentIndex) * 10)
                                 .rotation3DEffect(isTopCard ? rotationAngle : .zero, axis: (x: 0, y: 1, z: 0))
-                                .scaleEffect(isTopCard ? 1.0 : 0.95)
+                                .scaleEffect(dismissed && isTopCard ? 0.3 : (isTopCard ? 1.0 : 0.95))
+                                .opacity(dismissed && isTopCard ? 0 : 1)
                                 .animation(.spring(response: 0.4, dampingFraction: 0.75), value: dragOffset)
+                                .animation(.easeOut(duration: 0.3), value: dismissed)
                                 .gesture(
                                     isTopCard ? DragGesture()
                                         .onChanged { value in
@@ -51,21 +59,28 @@ struct SwipeableProfileView: View {
                                         }
                                         .onEnded { value in
                                             let threshold: CGFloat = 100
-                                            let generator = UIImpactFeedbackGenerator(style: .medium)
                                             withAnimation(.spring()) {
                                                 if value.translation.width < -threshold && currentIndex < profiles.count - 1 {
-                                                    currentIndex += 1
-                                                    generator.impactOccurred()
+                                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                                                    dismissed = true
+                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                        currentIndex += 1
+                                                        dragOffset = .zero
+                                                        dismissed = false
+                                                    }
                                                 } else if value.translation.width > threshold && currentIndex > 0 {
+                                                    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
                                                     currentIndex -= 1
-                                                    generator.impactOccurred()
+                                                    dragOffset = .zero
+                                                } else {
+                                                    dragOffset = .zero
                                                 }
-                                                dragOffset = .zero
                                             }
                                         }
                                     : nil
                                 )
 
+                            // Swipe icon
                             if isTopCard && abs(dragOffset.width) > 20 {
                                 Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
                                     .resizable()
@@ -80,7 +95,7 @@ struct SwipeableProfileView: View {
                                     .animation(.easeInOut, value: dragOffset)
                             }
 
-                            // Text overlay
+                            // Text info
                             VStack(alignment: .leading, spacing: 4) {
                                 Spacer()
                                 Text(profile.name)
@@ -105,9 +120,26 @@ struct SwipeableProfileView: View {
                     }
                 }
             }
+
+            // Back Button
+            VStack {
+                HStack {
+//                    Button(action: {
+//                        presentationMode.wrappedValue.dismiss()
+//                    }) {
+//                        Label("Back", systemImage: "chevron.left")
+//                            .foregroundColor(.white)
+//                            .padding(10)
+//                            .background(.ultraThinMaterial)
+//                            .clipShape(Capsule())
+//                    }
+                    Spacer()
+                }
+                .padding(.top, 50)
+                .padding(.horizontal)
+                Spacer()
+            }
         }
-        .padding()
-        .background(Color.black.edgesIgnoringSafeArea(.all))
     }
 }
 
