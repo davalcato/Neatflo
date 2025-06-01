@@ -18,8 +18,9 @@ struct SampleProfile: Identifiable {
     let bio: String
 }
 
-let sampleProfiles: [SampleProfile] = [
-    SampleProfile(
+@available(iOS 17, *)
+let sampleProfiles: [Profile] = [
+    Profile(
         name: "Jess Wong",
         title: "CTO",
         company: "Neatflo",
@@ -28,7 +29,7 @@ let sampleProfiles: [SampleProfile] = [
         role: "Engineer",
         bio: "Building productivity tools with AI."
     ),
-    SampleProfile(
+    Profile(
         name: "Marcus Lee",
         title: "CEO",
         company: "Visionary Inc.",
@@ -38,4 +39,5 @@ let sampleProfiles: [SampleProfile] = [
         bio: "Driving innovation in AR."
     )
 ]
+
 

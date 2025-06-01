@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @available(iOS 17.0, *)
 struct OpportunityDeckView: View {
@@ -13,9 +14,11 @@ struct OpportunityDeckView: View {
         Opportunity(
             title: "Seed Funding",
             company: "Neatflo",
+            location: "San Francisco, CA",
             summary: "AI for business",
             matchStrength: 0.9,
             timestamp: Date(),
+            tags: ["AI", "Productivity", "Seed", "B2B"],
             profile: Profile(
                 name: "Jess Wong",
                 title: "CTO",
@@ -29,9 +32,11 @@ struct OpportunityDeckView: View {
         Opportunity(
             title: "Series A",
             company: "TechLift",
+            location: "New York, NY",
             summary: "ML Scaling",
             matchStrength: 0.8,
             timestamp: Date(),
+            tags: ["Machine Learning", "Growth", "Series A", "Cloud"],
             profile: Profile(
                 name: "Sarah Kim",
                 title: "Partner",
@@ -53,28 +58,31 @@ struct OpportunityDeckView: View {
                     .font(.headline)
                     .foregroundColor(.gray)
             } else {
-                ForEach(opportunities.reversed(), id: \.id) { opportunity in
+                ForEach(opportunities.reversed(), id: \.persistentModelID) { opportunity in
                     SwipeCardView(
                         profile: opportunity.profile,
                         onRemove: { _, _ in
-                            removeCard(withId: opportunity.id)
+                            removeCard(withId: opportunity.persistentModelID)
                         }
                     )
                     .padding(.horizontal)
                 }
+
             }
         }
         .background(Color(.systemGroupedBackground))
         .ignoresSafeArea(edges: .top)
     }
 
-    private func removeCard(withId id: UUID) {
-        opportunities.removeAll { $0.id == id }
+    private func removeCard(withId id: PersistentIdentifier) {
+        opportunities.removeAll { $0.persistentModelID == id }
     }
+
 }
 
 @available(iOS 17.0, *)
 #Preview {
     OpportunityDeckView()
 }
+
 

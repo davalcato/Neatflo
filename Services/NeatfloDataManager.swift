@@ -90,6 +90,7 @@ final class NeatfloDataManager {
                 summary: "Connect with angel investors in your industry",
                 matchStrength: 0.85,
                 timestamp: Date(),
+                tags: ["Investment", "Networking", "Seed Round"],
                 profile: mockProfile
             ),
             Opportunity(
@@ -97,7 +98,8 @@ final class NeatfloDataManager {
                 company: "Founder Network",
                 summary: "Meet potential technical co-founders",
                 matchStrength: 0.92,
-                timestamp: Date().addingTimeInterval(-86400),
+                timestamp: Date().addingTimeInterval(-86400), // 1 day ago
+                tags: ["Co-Founder", "Partnership", "Startup"],
                 profile: mockProfile
             )
         ]

@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+
 @available(iOS 17, *)
 struct OpportunityCard<Destination: View>: View {
     let opportunity: Opportunity
@@ -83,6 +84,7 @@ struct OpportunityCard<Destination: View>: View {
     }
 }
 
+
 // MARK: - Preview
 @available(iOS 17.0, *)
 #Preview {
@@ -109,10 +111,11 @@ struct OpportunityCard<Destination: View>: View {
         summary: "AI for business",
         matchStrength: 0.92,
         timestamp: Date(),
+        tags: ["AI", "Seed", "B2B", "Tech", "Productivity"],
         profile: profile
     )
 
-    OpportunityCard(
+    return OpportunityCard(
         opportunity: opportunity,
         destination: {
             Text("Preview Destination")
@@ -121,6 +124,7 @@ struct OpportunityCard<Destination: View>: View {
     .padding()
     .modelContainer(container)
 }
+
 
 
 

@@ -7,7 +7,6 @@
 
 import Foundation
 import SwiftData
-import Combine
 
 @available(iOS 17, *)
 @MainActor
@@ -20,7 +19,7 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
         seedInitialDataIfNeeded()
     }
 
-    // MARK: - Core Methods
+    // MARK: - CRUD Operations
 
     func fetchOpportunities() async throws -> [Opportunity] {
         let descriptor = FetchDescriptor<Opportunity>(
@@ -28,8 +27,6 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
         )
         return try modelContext.fetch(descriptor)
     }
-
-    // MARK: - CRUD Operations
 
     func addOpportunity(_ opportunity: Opportunity) async throws {
         modelContext.insert(opportunity)
@@ -42,7 +39,7 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
 
     func deleteOpportunity(id: UUID) async throws {
         let descriptor = FetchDescriptor<Opportunity>(
-            predicate: #Predicate { $0.id == id }
+            predicate: #Predicate { $0.uuid == id }
         )
         if let opportunity = try modelContext.fetch(descriptor).first {
             modelContext.delete(opportunity)
@@ -74,18 +71,16 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
         let descriptor = FetchDescriptor<Opportunity>()
         guard (try? modelContext.fetch(descriptor).isEmpty) == true else { return }
 
-        // Create sample Profile
         let sampleProfile = Profile(
             name: "Jordan Smith",
             title: "Investor",
             company: "CapitalX",
-            photo: "jordan", // Make sure this exists in Assets
+            photo: "jordan",
             raised: "$2.5M",
             role: "Investor",
             bio: "Active angel investor with a passion for early-stage startups."
         )
 
-        // Sample Opportunities
         let sampleOpportunities = [
             Opportunity(
                 title: "Seed Investment",
@@ -93,6 +88,7 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
                 summary: "Connect with investors for your startup",
                 matchStrength: 0.92,
                 timestamp: Date(),
+                tags: ["Seed", "Investment", "Startup", "Fundraising"],
                 profile: sampleProfile
             ),
             Opportunity(
@@ -101,6 +97,7 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
                 summary: "Find your technical co-founder",
                 matchStrength: 0.88,
                 timestamp: Date().addingTimeInterval(-86400),
+                tags: ["Co-Founder", "Tech", "Startup", "Networking"],
                 profile: sampleProfile
             )
         ]
@@ -110,7 +107,7 @@ final class NeatfloDataService: NeatfloDataServiceProtocol {
     }
 }
 
-// MARK: - Persistence Configuration
+// MARK: - Global Persistence Struct
 
 @available(iOS 17, *)
 struct Persistence {
@@ -120,15 +117,17 @@ struct Persistence {
     init() {
         do {
             container = try ModelContainer(
-                for: Opportunity.self,
+                for: Opportunity.self, Profile.self,
                 configurations: ModelConfiguration(
-                    schema: Schema([Opportunity.self]),
+                    schema: Schema([Opportunity.self, Profile.self]),
                     isStoredInMemoryOnly: false
                 )
             )
         } catch {
-            fatalError("Failed to configure Neatflo persistence: \(error)")
+            print("⛔️ SwiftData model initialization failed: \(error)")
+            fatalError("❌ Failed to initialize Neatflo's data storage: \(error)")
         }
     }
 }
+
 

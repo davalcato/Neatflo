@@ -79,45 +79,47 @@ struct OpportunityRow: View {
 }
 
 // MARK: - Preview
-#Preview {
-    if #available(iOS 17, *) {
-        do {
-            let config = ModelConfiguration(isStoredInMemoryOnly: true)
-            let container = try ModelContainer(
-                for: Opportunity.self,
-                configurations: config
-            )
+@MainActor @available(iOS 17, *)
+private func setupPreview() -> some View {
+    do {
+        let config = ModelConfiguration(isStoredInMemoryOnly: true)
+        let container = try ModelContainer(
+            for: Opportunity.self, Profile.self,
+            configurations: config
+        )
 
-            let testProfile = Profile(
-                name: "Taylor Reid",
-                title: "Startup Mentor",
-                company: "Seed Ventures",
-                photo: "taylor",
-                raised: "$2M",
-                role: "Advisor",
-                bio: "Experienced startup mentor and early-stage investor."
-            )
+        let testProfile = Profile(
+            name: "Taylor Reid",
+            title: "Startup Mentor",
+            company: "Seed Ventures",
+            photo: "taylor",
+            raised: "$2M",
+            role: "Advisor",
+            bio: "Experienced startup mentor and early-stage investor."
+        )
 
-            let testOpportunity = Opportunity(
-                title: "Seed Funding",
-                company: "Neatflo Ventures",
-                summary: "Preview opportunity data",
-                matchStrength: 0.85,
-                timestamp: Date(),
-                profile: testProfile
-            )
+        let testOpportunity = Opportunity(
+            title: "Seed Funding",
+            company: "Neatflo Ventures",
+            summary: "Preview opportunity data",
+            matchStrength: 0.85,
+            timestamp: Date(),
+            tags: ["Funding", "Seed", "Mentorship"], profile: testProfile
+        )
 
-            container.mainContext.insert(testOpportunity)
+        container.mainContext.insert(testOpportunity)
 
-            return OpportunityListView()
+        return AnyView(
+            OpportunityListView()
                 .modelContainer(container)
-        } catch {
-            return Text("Failed to set up preview: \(error.localizedDescription)")
+        )
+    } catch {
+        return AnyView(
+            Text("Failed to set up preview: \(error.localizedDescription)")
                 .foregroundColor(.red)
-        }
-    } else {
-        return Text("Preview requires iOS 17+")
+        )
     }
 }
+
 
 

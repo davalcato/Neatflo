@@ -213,7 +213,7 @@ struct FeedView: View {
         let result: Result<AnyView, Error> = Result {
             if #available(iOS 17, *) {
                 let container = try ModelContainer(
-                    for: Opportunity.self,
+                    for: Opportunity.self, Profile.self,
                     configurations: ModelConfiguration(
                         isStoredInMemoryOnly: true
                     )
@@ -235,6 +235,7 @@ struct FeedView: View {
                     summary: "Preview data",
                     matchStrength: 0.85,
                     timestamp: Date(),
+                    tags: ["AI", "Productivity", "Funding"], // ✅ Tags filled in
                     profile: testProfile
                 )
                 
@@ -256,7 +257,6 @@ struct FeedView: View {
             }
         }
     }
-    
 }
     
     

@@ -1,0 +1,18 @@
+//
+//  opportunities.swift
+//  Neatflo
+//
+//  Created by Ethan Hunt on 5/31/25.
+//
+
+[
+  {
+    "id": "123",
+    "title": "Fintech Co-Founder Needed",
+    "summary": "Looking for a technical co-founder with mobile experience.",
+    "company": "StartupX",
+    "tags": ["fintech", "mobile", "co-founder"],
+    "timestamp": "2025-05-28T00:00:00Z"
+  }
+]
+

@@ -65,16 +65,18 @@ final class FeedViewModel: ObservableObject {
                 title: "Investor Introduction",
                 company: "Neatflo Network",
                 summary: "Connect with angel investors interested in your sector",
-                matchStrength: 87,
+                matchStrength: 0.87,
                 timestamp: Date(),
+                tags: ["Angel", "HealthTech", "Seed Funding", "Pitch"],
                 profile: sampleProfile
             ),
             Opportunity(
                 title: "Co-Founder Match",
                 company: "Founder Hub",
                 summary: "Meet potential technical co-founders with complementary skills",
-                matchStrength: 92,
+                matchStrength: 0.92,
                 timestamp: Date().addingTimeInterval(-86400),
+                tags: ["Co-Founder", "Tech", "Networking", "Startup"],
                 profile: sampleProfile
             )
         ]
@@ -82,4 +84,6 @@ final class FeedViewModel: ObservableObject {
         sampleOpportunities.forEach { modelContext.insert($0) }
         try? modelContext.save()
     }
+    
 }
+

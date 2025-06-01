@@ -16,6 +16,7 @@ class MockDataService: ObservableObject {
             summary: "Preview data for iOS 16",
             matchStrength: 0.8,
             timestamp: Date(),
+            tags: ["Startup", "Investor", "Demo", "iOS"],
             profile: Profile(
                 name: "Jess Wong",
                 title: "Investor",
@@ -32,4 +33,5 @@ class MockDataService: ObservableObject {
         return opportunities
     }
 }
+
 

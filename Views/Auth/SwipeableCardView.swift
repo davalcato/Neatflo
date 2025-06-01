@@ -16,7 +16,16 @@ struct SwipeCardStackView: View {
             summary: "AI productivity tools",
             matchStrength: 0.9,
             timestamp: .now,
-            profile: Profile(name: "Jess Wong", title: "CTO", company: "Neatflo", photo: "jess", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups.")
+            tags: ["AI", "Tech", "Leadership"],
+            profile: Profile(
+                name: "Jess Wong",
+                title: "CTO",
+                company: "Neatflo",
+                photo: "jess",
+                raised: "$0",
+                role: "Angel Investor",
+                bio: "Invests in early-stage tech startups."
+            )
         ),
         Opportunity(
             title: "Engineer",
@@ -24,7 +33,16 @@ struct SwipeCardStackView: View {
             summary: "Healthcare innovation",
             matchStrength: 0.85,
             timestamp: .now,
-            profile: Profile(name: "Dave Patel", title: "Engineer", company: "HealthAI", photo: "dave", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups.")
+            tags: ["Healthcare", "Engineering", "Innovation"],
+            profile: Profile(
+                name: "Dave Patel",
+                title: "Engineer",
+                company: "HealthAI",
+                photo: "dave",
+                raised: "$0",
+                role: "Angel Investor",
+                bio: "Invests in early-stage tech startups."
+            )
         ),
         Opportunity(
             title: "Designer",
@@ -32,7 +50,16 @@ struct SwipeCardStackView: View {
             summary: "Sustainable design",
             matchStrength: 0.88,
             timestamp: .now,
-            profile: Profile(name: "Zoe Li", title: "Designer", company: "EcoLoop", photo: "zoe", raised: "$0", role: "Angel Investor", bio: "Invests in early-stage tech startups.")
+            tags: ["Sustainability", "Design", "Eco"],
+            profile: Profile(
+                name: "Zoe Li",
+                title: "Designer",
+                company: "EcoLoop",
+                photo: "zoe",
+                raised: "$0",
+                role: "Angel Investor",
+                bio: "Invests in early-stage tech startups."
+            )
         )
     ]
 
@@ -53,6 +80,7 @@ struct SwipeCardStackView: View {
         .padding()
     }
 }
+
 
 #Preview {
     if #available(iOS 17, *) {

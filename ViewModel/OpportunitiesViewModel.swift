@@ -25,6 +25,7 @@ class OpportunitiesViewModel: ObservableObject {
                     summary: "AI-powered workflow automation",
                     matchStrength: 0.87,
                     timestamp: Date(),
+                    tags: ["AI", "Automation", "Seed"],
                     profile: Profile(
                         name: "Jess Wong",
                         title: "CTO",
@@ -41,6 +42,7 @@ class OpportunitiesViewModel: ObservableObject {
                     summary: "Building AI detection layers for mobile apps",
                     matchStrength: 0.92,
                     timestamp: Date(),
+                    tags: ["AI", "Mobile", "Co-Founder"],
                     profile: Profile(
                         name: "David Alvarez",
                         title: "Founder",
@@ -56,6 +58,7 @@ class OpportunitiesViewModel: ObservableObject {
         }
     }
 }
+
 
 
 

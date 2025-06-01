@@ -9,22 +9,6 @@ import UIKit
 import SwiftUI
 import SwiftData
 
-//@main
-//struct NeatfloApp: App {
-//    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-//
-//    var body: some Scene {
-//        WindowGroup {
-//            if #available(iOS 17.0, *) {
-//                ContentView()
-//                    .modelContainer(AppDelegate.sharedModelContainer)
-//            } else {
-//                // Fallback on earlier versions
-//            }
-//        }
-//    }
-//}
-
 class AppDelegate: NSObject, UIApplicationDelegate {
     
     // MARK: - SwiftData Setup
@@ -70,7 +54,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
     @available(iOS 17, *)
     private func seedInitialOpportunities() {
         let context = AppDelegate.sharedModelContainer.mainContext
-        
+
         let fetchRequest = FetchDescriptor<Opportunity>()
         guard (try? context.fetch(fetchRequest).isEmpty) == true else { return }
 
@@ -91,6 +75,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 summary: "Connect with seed-stage investors",
                 matchStrength: 0.88,
                 timestamp: Date(),
+                tags: ["Investment", "Networking", "Startups"],
                 profile: sampleProfile
             ),
             Opportunity(
@@ -99,18 +84,20 @@ class AppDelegate: NSObject, UIApplicationDelegate {
                 summary: "Meet potential technical partners",
                 matchStrength: 0.91,
                 timestamp: Date().addingTimeInterval(-86400),
+                tags: ["Co-founder", "Tech", "Partnership"],
                 profile: sampleProfile
             )
         ]
-        
+
         mockOpportunities.forEach { context.insert($0) }
-        
+
         do {
             try context.save()
         } catch {
             print("⚠️ Neatflo failed to seed initial data: \(error)")
         }
     }
+
 
     // MARK: - Debug Tool: Reset All Data
     @MainActor

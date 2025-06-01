@@ -50,6 +50,8 @@
 		DAA5A6DF2DBDB88800AD57E4 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */; };
 		DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6E02DBDB8BF00AD57E4 /* Opportunity.swift */; };
 		DAAC15862DC2B7D40096E81E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAAC15852DC2B7D40096E81E /* Assets.xcassets */; };
+		DAB0B3112DEBF35D00A2A638 /* opportunities.json in Sources */ = {isa = PBXBuildFile; fileRef = DAB0B3102DEBF35D00A2A638 /* opportunities.json */; };
+		DAB0B3132DEC00D900A2A638 /* OpportunityFeedView_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB0B3122DEC00D900A2A638 /* OpportunityFeedView_Previews.swift */; };
 		DAC0A2D92DE43EC900DDA8DD /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0A2D82DE43EC900DDA8DD /* MainView.swift */; };
 		DAC5EA0C2DE243D300CF2ED4 /* SwipeableProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */; };
 		DAF4F0902DDAD6C700FAA050 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF4F08F2DDAD6C700FAA050 /* CustomTextField.swift */; };
@@ -127,6 +129,8 @@
 		DAAC15892DC2B9EE0096E81E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAAC158D2DC2D4660096E81E /* FirebaseAnalytics.xcframework */ = {isa = PBXFileReference; expectedSignature = "AppleDeveloperProgram:EQHXZ8M8AV:Google LLC"; lastKnownFileType = wrapper.xcframework; name = FirebaseAnalytics.xcframework; path = Pods/FirebaseAnalytics/Frameworks/FirebaseAnalytics.xcframework; sourceTree = "<group>"; };
 		DAAC158E2DC2D4660096E81E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAB0B3102DEBF35D00A2A638 /* opportunities.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = opportunities.json; sourceTree = "<group>"; };
+		DAB0B3122DEC00D900A2A638 /* OpportunityFeedView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityFeedView_Previews.swift; sourceTree = "<group>"; };
 		DAB3D88E2DC6DCF600EBF26C /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC0A2D82DE43EC900DDA8DD /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		DAC5EA0B2DE243D300CF2ED4 /* SwipeableProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableProfileView.swift; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 				DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */,
 				DA6498F32DDCFC73009861EB /* OpportunityCard.swift */,
 				DA6498F42DDCFC73009861EB /* OpportunityDeckView.swift */,
+				DAB0B3102DEBF35D00A2A638 /* opportunities.json */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -278,6 +283,7 @@
 				DA6498F52DDCFC73009861EB /* OpportunityFeedView.swift */,
 				DAA5A6DE2DBDB88800AD57E4 /* FeedViewModel.swift */,
 				DA6498FD2DDD09B9009861EB /* ProfileCardViewModel.swift */,
+				DAB0B3122DEC00D900A2A638 /* OpportunityFeedView_Previews.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -518,6 +524,7 @@
 				DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */,
 				DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */,
 				DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */,
+				DAB0B3112DEBF35D00A2A638 /* opportunities.json in Sources */,
 				DA572D0F2DE8C08000371EFA /* SampleProfile.swift in Sources */,
 				DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */,
 				DA45255F2DBDAEA3001AFE0D /* SplashViewModel.swift in Sources */,
@@ -529,6 +536,7 @@
 				DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */,
 				DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */,
 				DA6498EA2DDCD39E009861EB /* SwipeableCardView.swift in Sources */,
+				DAB0B3132DEC00D900A2A638 /* OpportunityFeedView_Previews.swift in Sources */,
 				DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */,
 				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,
 				DA572D0B2DE8274700371EFA /* SwipeCardView.swift in Sources */,
