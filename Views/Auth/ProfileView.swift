@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ProfileView: View {
+struct SimpleProfileView: View {
     var body: some View {
         VStack {
             Image(systemName: "person.crop.circle")
@@ -21,5 +21,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView()
+    SimpleProfileView()
 }

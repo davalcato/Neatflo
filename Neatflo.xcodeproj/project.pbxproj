@@ -43,6 +43,7 @@
 		DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */; };
 		DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897C2DD123A900EE5B88 /* ContentView.swift */; };
 		DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */; };
+		DA7E74A32DF155E500F92627 /* CompletionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7E74A22DF155E500F92627 /* CompletionView.swift */; };
 		DA80C8BD2DCFCDBB00B879C2 /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80C8BC2DCFCDBB00B879C2 /* PersistenceController.swift */; };
 		DAA5059B2DDAB51300D80412 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5059A2DDAB51300D80412 /* LoginViewModel.swift */; };
 		DAA5A6DB2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA5A6DA2DBDB7F500AD57E4 /* FirestoreServiceProtocol.swift */; };
@@ -116,6 +117,7 @@
 		DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityMO.swift; sourceTree = "<group>"; };
 		DA7D897C2DD123A900EE5B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeatfloApp.swift; sourceTree = "<group>"; };
+		DA7E74A22DF155E500F92627 /* CompletionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletionView.swift; sourceTree = "<group>"; };
 		DA80C8BC2DCFCDBB00B879C2 /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		DA90581E2DC5D4BB00C1A19C /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA9749352DC1DC1300AB3EE3 /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -325,6 +327,7 @@
 				DA2A7C432DE107BE0066DAC6 /* CardViewModifier.swift */,
 				DA572D122DEAC8EC00371EFA /* BlurView.swift */,
 				DA572D142DEAC95400371EFA /* ErrorView.swift */,
+				DA7E74A22DF155E500F92627 /* CompletionView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -523,6 +526,7 @@
 				DA572D112DEA87A700371EFA /* ProfileDetailView.swift in Sources */,
 				DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */,
 				DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */,
+				DA7E74A32DF155E500F92627 /* CompletionView.swift in Sources */,
 				DA3CD4AC2DC711810033EF02 /* DataService.swift in Sources */,
 				DAB0B3112DEBF35D00A2A638 /* opportunities.json in Sources */,
 				DA572D0F2DE8C08000371EFA /* SampleProfile.swift in Sources */,
