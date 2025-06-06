@@ -11,11 +11,11 @@ import AVFoundation
 @available(iOS 17.0, *)
 struct SwipeableProfileView: View {
     @State var profiles: [Profile]
-    @State private var currentIndex: Int = 0
+    @State private var currentIndex = 0
     @State private var dragOffset: CGSize = .zero
-    @State private var dismissed: Bool = false
-    @State private var selectedProfile: Profile?
+    @State private var dismissed = false
     @State private var showCompletion = false
+    @State private var selectedProfile: Profile?
 
     var body: some View {
         NavigationStack {
@@ -78,12 +78,16 @@ struct SwipeableProfileView: View {
                                                             let threshold: CGFloat = 100
                                                             withAnimation(.spring()) {
                                                                 if value.translation.width < -threshold && currentIndex < profiles.count - 1 {
-                                                                    currentIndex += 1
-                                                                    dragOffset = .zero
+                                                                    dismissed = true
+                                                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                                        currentIndex += 1
+                                                                        dragOffset = .zero
+                                                                        dismissed = false
 
-                                                                    if currentIndex == profiles.count - 1 {
-                                                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
-                                                                            showCompletion = true
+                                                                        if currentIndex == profiles.count - 1 {
+                                                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+                                                                                showCompletion = true
+                                                                            }
                                                                         }
                                                                     }
                                                                 } else if value.translation.width > threshold && currentIndex > 0 {
