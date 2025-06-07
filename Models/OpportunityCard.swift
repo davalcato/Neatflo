@@ -8,41 +8,80 @@
 import SwiftUI
 import SwiftData
 
-
 @available(iOS 17, *)
 struct OpportunityCard<Destination: View>: View {
     let opportunity: Opportunity
     let destination: () -> Destination
-
+    
     @State private var isPressed = false
     @State private var navigate = false
-
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Image(systemName: "briefcase.fill")
-                    .foregroundColor(.accentColor)
-                Text(opportunity.title)
-                    .font(.headline)
+            HStack(spacing: 12) {
+                Image(systemName: "briefcase.circle.fill")
+                    .font(.title2)
+                    .foregroundColor(.blue)
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(opportunity.title)
+                        .font(.title3.bold())
+                    
+                    Text(opportunity.company)
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
+                }
+                
+                Spacer()
+                
+                // Match strength indicator
+                VStack {
+                    Text("Match")
+                        .font(.caption2)
+                        .foregroundColor(.gray)
+                    Text("\(Int(opportunity.matchStrength * 100))%")
+                        .font(.headline)
+                        .foregroundColor(opportunity.matchStrength > 0.8 ? .green : .orange)
+                }
+                
+                
             }
-
-            Text(opportunity.company)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-
+            
+            
+            
             if let location = opportunity.location {
                 Label(location, systemImage: "mappin.and.ellipse")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
-
+            
             Text(opportunity.summary)
                 .font(.footnote)
-                .foregroundColor(.secondary)
-
+                .foregroundColor(.primary)
+                .padding(.top, 2)
+            
+            // Tags
+            if !opportunity.tags.isEmpty {
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 6) {
+                        ForEach(opportunity.tags, id: \.self) { tag in
+                            Text(tag)
+                                .font(.caption)
+                                .padding(.horizontal, 8)
+                                .padding(.vertical, 4)
+                                .background(Color.blue.opacity(0.15))
+                                .foregroundColor(.blue)
+                                .cornerRadius(10)
+                        }
+                    }
+                }
+                .padding(.top, 6)
+            }
+            
+            // CTA Button
             HStack {
                 Spacer()
-
+                
                 Button(action: {
                     print("Tapped on: \(opportunity.title)")
                     navigate = true
@@ -50,11 +89,12 @@ struct OpportunityCard<Destination: View>: View {
                     Text("View Details")
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
-                        .padding(.horizontal, 16)
-                        .padding(.vertical, 8)
-                        .background(isPressed ? Color.blue.opacity(0.7) : Color.blue)
-                        .cornerRadius(8)
-                        .scaleEffect(isPressed ? 0.97 : 1.0)
+                        .padding(.horizontal, 20)
+                        .padding(.vertical, 10)
+                        .background(isPressed ? Color.blue.opacity(0.8) : Color.blue)
+                        .cornerRadius(10)
+                        .scaleEffect(isPressed ? 0.96 : 1.0)
+                        .shadow(radius: isPressed ? 1 : 4)
                 }
                 .buttonStyle(PlainButtonStyle())
                 .simultaneousGesture(
@@ -70,7 +110,7 @@ struct OpportunityCard<Destination: View>: View {
                             }
                         }
                 )
-
+                
                 NavigationLink(destination: destination(), isActive: $navigate) {
                     EmptyView()
                 }
@@ -79,22 +119,25 @@ struct OpportunityCard<Destination: View>: View {
         }
         .padding()
         .background(.ultraThinMaterial)
-        .cornerRadius(16)
-        .shadow(radius: 6)
+        .background(
+            RoundedRectangle(cornerRadius: 16)
+                .fill(.ultraThinMaterial)
+                .shadow(radius: 10)
+        )
+        .clipShape(RoundedRectangle(cornerRadius: 16))
+        .padding(.horizontal)
     }
 }
-
 
 // MARK: - Preview
 @available(iOS 17.0, *)
 #Preview {
-    // Create an in-memory configuration correctly
     let config = ModelConfiguration(isStoredInMemoryOnly: true)
     let container = try! ModelContainer(
         for: Opportunity.self,
         configurations: config
     )
-
+    
     let profile = Profile(
         name: "Jess Wong",
         title: "CTO",
@@ -104,7 +147,7 @@ struct OpportunityCard<Destination: View>: View {
         role: "Engineer",
         bio: "Building productivity tools with AI."
     )
-
+    
     let opportunity = Opportunity(
         title: "Seed Funding",
         company: "Neatflo",
@@ -114,7 +157,7 @@ struct OpportunityCard<Destination: View>: View {
         tags: ["AI", "Seed", "B2B", "Tech", "Productivity"],
         profile: profile
     )
-
+    
     return OpportunityCard(
         opportunity: opportunity,
         destination: {
@@ -124,6 +167,7 @@ struct OpportunityCard<Destination: View>: View {
     .padding()
     .modelContainer(container)
 }
+
 
 
 
