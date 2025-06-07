@@ -12,76 +12,59 @@ import SwiftData
 struct OpportunityCard<Destination: View>: View {
     let opportunity: Opportunity
     let destination: () -> Destination
-    
+
     @State private var isPressed = false
     @State private var navigate = false
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            HStack(spacing: 12) {
-                Image(systemName: "briefcase.circle.fill")
-                    .font(.title2)
-                    .foregroundColor(.blue)
-                
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(opportunity.title)
-                        .font(.title3.bold())
-                    
-                    Text(opportunity.company)
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-                
-                // Match strength indicator
-                VStack {
-                    Text("Match")
-                        .font(.caption2)
-                        .foregroundColor(.gray)
-                    Text("\(Int(opportunity.matchStrength * 100))%")
-                        .font(.headline)
-                        .foregroundColor(opportunity.matchStrength > 0.8 ? .green : .orange)
-                }
-                
-                
+            HStack {
+                Image(systemName: "briefcase.fill")
+                    .foregroundColor(.accentColor)
+                Text(opportunity.title)
+                    .font(.headline)
             }
-            
-            
-            
+
+            Text(opportunity.company)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+
             if let location = opportunity.location {
                 Label(location, systemImage: "mappin.and.ellipse")
                     .font(.footnote)
                     .foregroundColor(.gray)
             }
-            
+
             Text(opportunity.summary)
                 .font(.footnote)
-                .foregroundColor(.primary)
-                .padding(.top, 2)
-            
-            // Tags
+                .foregroundColor(.secondary)
+
+            // Tag Chips
             if !opportunity.tags.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 6) {
+                    HStack(spacing: 8) {
                         ForEach(opportunity.tags, id: \.self) { tag in
-                            Text(tag)
-                                .font(.caption)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background(Color.blue.opacity(0.15))
-                                .foregroundColor(.blue)
-                                .cornerRadius(10)
+                            TagButton(tag: tag)
                         }
                     }
+                    .padding(.top, 4)
                 }
-                .padding(.top, 6)
             }
-            
-            // CTA Button
+
             HStack {
+                if opportunity.matchStrength > 0 {
+                    VStack {
+                        Text("Match")
+                            .font(.caption2)
+                            .foregroundColor(.gray)
+                        Text("\(Int(opportunity.matchStrength * 100))%")
+                            .font(.headline)
+                            .foregroundColor(opportunity.matchStrength > 0.8 ? .green : .orange)
+                    }
+                }
+
                 Spacer()
-                
+
                 Button(action: {
                     print("Tapped on: \(opportunity.title)")
                     navigate = true
@@ -89,12 +72,11 @@ struct OpportunityCard<Destination: View>: View {
                     Text("View Details")
                         .font(.subheadline.bold())
                         .foregroundColor(.white)
-                        .padding(.horizontal, 20)
-                        .padding(.vertical, 10)
-                        .background(isPressed ? Color.blue.opacity(0.8) : Color.blue)
-                        .cornerRadius(10)
-                        .scaleEffect(isPressed ? 0.96 : 1.0)
-                        .shadow(radius: isPressed ? 1 : 4)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .background(isPressed ? Color.blue.opacity(0.7) : Color.blue)
+                        .cornerRadius(8)
+                        .scaleEffect(isPressed ? 0.97 : 1.0)
                 }
                 .buttonStyle(PlainButtonStyle())
                 .simultaneousGesture(
@@ -110,7 +92,7 @@ struct OpportunityCard<Destination: View>: View {
                             }
                         }
                 )
-                
+
                 NavigationLink(destination: destination(), isActive: $navigate) {
                     EmptyView()
                 }
@@ -119,15 +101,11 @@ struct OpportunityCard<Destination: View>: View {
         }
         .padding()
         .background(.ultraThinMaterial)
-        .background(
-            RoundedRectangle(cornerRadius: 16)
-                .fill(.ultraThinMaterial)
-                .shadow(radius: 10)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: 16))
-        .padding(.horizontal)
+        .cornerRadius(16)
+        .shadow(radius: 6)
     }
 }
+
 
 // MARK: - Preview
 @available(iOS 17.0, *)
