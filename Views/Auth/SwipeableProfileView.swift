@@ -21,7 +21,7 @@ struct SwipeableProfileView: View {
         NavigationStack {
             ZStack {
                 LinearGradient(
-                    colors: [.purple.opacity(0.8), .blue.opacity(0.8)],
+                    colors: [.purple.opacity(0.85), .blue.opacity(0.85)],
                     startPoint: .topLeading,
                     endPoint: .bottomTrailing
                 )
@@ -47,19 +47,21 @@ struct SwipeableProfileView: View {
                                         let rotationAngle = Angle(degrees: Double(dragAmount / 15))
 
                                         ZStack {
+                                            // Background image
                                             Image(profile.photo)
                                                 .resizable()
                                                 .scaledToFill()
                                                 .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.75)
-                                                .cornerRadius(20)
-                                                .shadow(radius: 10)
+                                                .clipped()
+                                                .cornerRadius(24)
+                                                .shadow(radius: 12)
                                                 .overlay(
                                                     LinearGradient(
-                                                        gradient: Gradient(colors: [Color.black.opacity(0.6), Color.clear]),
+                                                        gradient: Gradient(colors: [Color.black.opacity(0.65), Color.clear]),
                                                         startPoint: .bottom,
                                                         endPoint: .top
                                                     )
-                                                    .cornerRadius(20)
+                                                    .cornerRadius(24)
                                                 )
                                                 .offset(x: isTopCard ? dragOffset.width : 0,
                                                         y: isTopCard ? dragOffset.height : CGFloat(index - currentIndex) * 10)
@@ -101,6 +103,7 @@ struct SwipeableProfileView: View {
                                                     : nil
                                                 )
 
+                                            // Swipe indicators
                                             if isTopCard && abs(dragOffset.width) > 20 {
                                                 Image(systemName: dragOffset.width > 0 ? "hand.thumbsup.fill" : "hand.thumbsdown.fill")
                                                     .resizable()
@@ -115,23 +118,34 @@ struct SwipeableProfileView: View {
                                                     .animation(.easeInOut, value: dragOffset)
                                             }
 
-                                            VStack(alignment: .leading, spacing: 4) {
+                                            // Profile info overlay
+                                            VStack(alignment: .leading, spacing: 6) {
                                                 Spacer()
-                                                Text(profile.name)
-                                                    .font(.title)
-                                                    .bold()
 
-                                                Text("\(profile.title) at \(profile.company)")
-                                                    .font(.subheadline)
+                                                VStack(alignment: .leading, spacing: 4) {
+                                                    Text(profile.name)
+                                                        .font(.title2.bold())
+                                                        .foregroundColor(.white)
 
-                                                Text("Raised: \(profile.raised)")
-                                                    .font(.subheadline)
+                                                    Text("\(profile.title) at \(profile.company)")
+                                                        .font(.subheadline)
+                                                        .foregroundColor(.white.opacity(0.9))
 
-                                                Text(profile.bio)
-                                                    .font(.body)
+                                                    Text("Raised: \(profile.raised)")
+                                                        .font(.footnote)
+                                                        .foregroundColor(.green)
+
+                                                    Text(profile.bio)
+                                                        .font(.footnote)
+                                                        .foregroundColor(.white.opacity(0.85))
+                                                        .lineLimit(3)
+                                                }
+                                                .padding()
+                                                .background(.ultraThinMaterial)
+                                                .cornerRadius(20)
                                             }
-                                            .foregroundColor(.white)
-                                            .padding()
+                                            .padding(.bottom, 16)
+                                            .padding(.horizontal, 12)
                                             .frame(maxWidth: .infinity, alignment: .leading)
                                         }
                                         .frame(width: geometry.size.width, height: geometry.size.height)
@@ -143,17 +157,20 @@ struct SwipeableProfileView: View {
                             VStack(spacing: 16) {
                                 Text("🎉 No more profiles")
                                     .font(.title2)
-                                    .foregroundColor(.white.opacity(0.8))
+                                    .foregroundColor(.white.opacity(0.85))
                                     .padding()
 
                                 Button(action: {
                                     currentIndex = 0
                                 }) {
                                     Text("🔁 Start Over")
+                                        .font(.headline)
                                         .foregroundColor(.white)
-                                        .padding()
-                                        .background(Color.blue)
-                                        .cornerRadius(12)
+                                        .padding(.horizontal, 24)
+                                        .padding(.vertical, 10)
+                                        .background(Color.accentColor)
+                                        .cornerRadius(14)
+                                        .shadow(radius: 4)
                                 }
                             }
                         }

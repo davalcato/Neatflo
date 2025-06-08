@@ -13,50 +13,60 @@ struct ProfileCardView: View {
 
     var body: some View {
         ScrollView {
-            VStack(spacing: 16) {
-                ForEach(profiles) { profile in
-                    HStack(alignment: .top, spacing: 16) {
-                        loadImage(named: profile.photo)
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 60, height: 60)
-                            .clipShape(Circle())
-                            .shadow(radius: 4)
+            VStack(spacing: 20) {
+                ForEach(profiles, id: \.id) { profile in
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack {
+                            Image(profile.photo)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 60, height: 60)
+                                .clipShape(Circle())
+                                .shadow(radius: 4)
 
-                        VStack(alignment: .leading, spacing: 4) {
-                            Text(profile.name)
-                                .font(.title3)
-                                .fontWeight(.semibold)
-
-                            Text("\(profile.title) at \(profile.company)")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-
-                            if profile.raised != "$0" {
-                                Text("Raised: \(profile.raised)")
-                                    .font(.footnote)
-                                    .foregroundColor(.green)
+                            VStack(alignment: .leading, spacing: 4) {
+                                Text(profile.name)
+                                    .font(.title3.bold())
+                                Text(profile.title + " @ " + profile.company)
+                                    .font(.subheadline)
+                                    .foregroundColor(.secondary)
                             }
+                            Spacer()
                         }
 
-                        Spacer()
+                        Text(profile.bio)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .lineLimit(3)
+
+                        HStack {
+                            Label("Raised: \(profile.raised)", systemImage: "chart.bar.fill")
+                                .font(.footnote)
+                                .foregroundColor(.blue)
+                            Spacer()
+                            Label(profile.role, systemImage: "person.crop.circle.fill")
+                                .font(.footnote)
+                                .foregroundColor(.purple)
+                        }
                     }
-                    .cardView()
+                    .padding()
+                    .background(
+                        LinearGradient(colors: [.white, .blue.opacity(0.1)],
+                                       startPoint: .topLeading,
+                                       endPoint: .bottomTrailing)
+                    )
+                    .cornerRadius(16)
+                    .shadow(color: .black.opacity(0.1), radius: 6, x: 0, y: 4)
+                    .padding(.horizontal)
                 }
             }
-            .padding()
+            .padding(.top)
         }
-    }
-
-    /// Loads an image from assets or uses a fallback system image
-    private func loadImage(named name: String) -> Image {
-        if let uiImage = UIImage(named: name) {
-            return Image(uiImage: uiImage)
-        } else {
-            return Image(systemName: "person.crop.circle.fill")
-        }
+        .navigationTitle("Investor Profiles")
+        .background(Color(.systemGroupedBackground).ignoresSafeArea())
     }
 }
+
 
 #Preview {
     if #available(iOS 17, *) {

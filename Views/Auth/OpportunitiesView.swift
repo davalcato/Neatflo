@@ -5,8 +5,8 @@
 //  Created by Ethan Hunt on 5/20/25.
 //
 
-import Foundation
 import SwiftUI
+import Foundation
 
 @available(iOS 17, *)
 class ProfileViewModel: ObservableObject {
@@ -31,9 +31,16 @@ struct OpportunitiesView: View {
     var body: some View {
         NavigationStack {
             ZStack {
+                LinearGradient(colors: [.purple.opacity(0.6), .blue.opacity(0.6)],
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+                
                 if viewModel.isLoading && viewModel.opportunities.isEmpty {
-                    ProgressView()
+                    ProgressView("Loading Opportunities...")
                         .scaleEffect(1.5)
+                        .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                        .foregroundColor(.white)
                 } else {
                     opportunityList
                 }
@@ -45,23 +52,24 @@ struct OpportunitiesView: View {
         }
     }
 
-    @available(iOS 17, *)
     private var opportunityList: some View {
         List {
             ForEach(viewModel.opportunities, id: \.id) { opportunity in
                 OpportunityCard(
                     opportunity: opportunity,
-                    destination: {
+                    destination: { () -> AnyView in   // <-- return AnyView instead of some View
                         let title = opportunity.title.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-                        
+
                         if title.contains("investor") {
-                            // ✅ This ensures "Investor Introduction" is caught
                             return AnyView(SwipeableProfileView(profiles: profileVM.investorProfiles))
                         } else if title.contains("co-founder") || title.contains("cofounder") {
-                            // ✅ This ensures "Co-Founder Match" is caught
                             return AnyView(SwipeableProfileView(profiles: profileVM.coFounderProfiles))
                         } else {
-                            return AnyView(Text("Details not available"))
+                            return AnyView(
+                                Text("Details not available")
+                                    .font(.title2)
+                                    .foregroundColor(.gray)
+                            )
                         }
                     }
                 )
@@ -70,15 +78,25 @@ struct OpportunitiesView: View {
             }
         }
         .listStyle(.plain)
+        .padding(.top)
         .animation(.easeInOut, value: viewModel.opportunities)
     }
 
+}
 
+// Helper extension to erase type when returning different views
+extension View {
+    func eraseToAnyView() -> AnyView {
+        AnyView(self)
+    }
 }
 
 @available(iOS 17.0, *)
 #Preview {
     OpportunitiesView(profileVM: ProfileViewModel())
 }
+
+
+
 
 

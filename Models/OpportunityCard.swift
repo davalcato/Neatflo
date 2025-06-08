@@ -34,7 +34,6 @@ struct OpportunityCard<Destination: View>: View {
                 
                 Spacer()
                 
-                // Match strength indicator
                 VStack {
                     Text("Match")
                         .font(.caption2)
@@ -43,11 +42,7 @@ struct OpportunityCard<Destination: View>: View {
                         .font(.headline)
                         .foregroundColor(opportunity.matchStrength > 0.8 ? .green : .orange)
                 }
-                
-                
             }
-            
-            
             
             if let location = opportunity.location {
                 Label(location, systemImage: "mappin.and.ellipse")
@@ -60,7 +55,6 @@ struct OpportunityCard<Destination: View>: View {
                 .foregroundColor(.primary)
                 .padding(.top, 2)
             
-            // Tags
             if !opportunity.tags.isEmpty {
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 6) {
@@ -72,14 +66,11 @@ struct OpportunityCard<Destination: View>: View {
                 }
                 .padding(.top, 6)
             }
-
             
-            // CTA Button
             HStack {
                 Spacer()
                 
                 Button(action: {
-                    print("Tapped on: \(opportunity.title)")
                     navigate = true
                 }) {
                     Text("View Details")
@@ -124,6 +115,7 @@ struct OpportunityCard<Destination: View>: View {
         .padding(.horizontal)
     }
 }
+
 
 // MARK: - Preview
 @available(iOS 17.0, *)

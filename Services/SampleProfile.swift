@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct SampleProfile: Identifiable {
+struct SampleProfile: Identifiable, Hashable {
     let id = UUID()
     let name: String
     let title: String
