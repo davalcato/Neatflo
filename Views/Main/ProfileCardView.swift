@@ -14,15 +14,36 @@ struct ProfileCardView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
+                // 💡 Clever Title with Gradient and Emoji
+                Text("💼 AI-Matched Investors")
+                    .font(.system(size: 28, weight: .bold, design: .rounded))
+                    .foregroundStyle(
+                        LinearGradient(colors: [.white, .yellow],
+                                       startPoint: .leading,
+                                       endPoint: .trailing)
+                    )
+                    .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
+                    .padding(.top)
+
                 ForEach(profiles, id: \.id) { profile in
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
-                            Image(profile.photo)
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 60, height: 60)
-                                .clipShape(Circle())
-                                .shadow(radius: 4)
+                            // 👤 Custom image if profile is Sarah Kim
+                            if profile.name == "Sarah Kim" {
+                                Image("sarah_kim")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 4)
+                            } else {
+                                Image(profile.photo)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 4)
+                            }
 
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(profile.name)
@@ -62,10 +83,17 @@ struct ProfileCardView: View {
             }
             .padding(.top)
         }
-        .navigationTitle("Investor Profiles")
-        .background(Color(.systemGroupedBackground).ignoresSafeArea())
+        .background(
+            LinearGradient(colors: [Color.purple.opacity(0.25),
+                                    Color.blue.opacity(0.2),
+                                    Color.pink.opacity(0.25)],
+                           startPoint: .topLeading,
+                           endPoint: .bottomTrailing)
+            .ignoresSafeArea()
+        )
     }
 }
+
 
 
 #Preview {
