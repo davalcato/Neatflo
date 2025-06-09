@@ -28,9 +28,23 @@ struct ProfileCardView: View {
                 ForEach(profiles, id: \.id) { profile in
                     VStack(alignment: .leading, spacing: 10) {
                         HStack {
-                            // 👤 Custom image if profile is Sarah Kim
+                            // Conditionally show custom photo
                             if profile.name == "Sarah Kim" {
                                 Image("sarah_kim")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 4)
+                            } else if profile.name == "Nina Rao" {
+                                Image("Nina_Rao")
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 60, height: 60)
+                                    .clipShape(Circle())
+                                    .shadow(radius: 4)
+                            } else if profile.name == "Tom Lee" {
+                                Image("Tom_Lee")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(width: 60, height: 60)
@@ -93,7 +107,6 @@ struct ProfileCardView: View {
         )
     }
 }
-
 
 
 #Preview {
