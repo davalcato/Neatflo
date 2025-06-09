@@ -29,31 +29,42 @@ struct ProfileCardView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 0) {
-                HStack {
-                    Spacer()
+                // Search Bar Header Area
+                ZStack {
+                    LinearGradient(colors: [Color.indigo.opacity(0.4), Color.pink.opacity(0.4)],
+                                   startPoint: .topLeading,
+                                   endPoint: .bottomTrailing)
+                        .frame(height: 100)
+                        .shadow(radius: 5)
 
-                    if showSearch {
-                        TextField("Search", text: $searchText)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                            .transition(.move(edge: .trailing).combined(with: .opacity))
-                            .frame(maxWidth: 200)
-                            .padding(.trailing, 8)
-                    }
+                    HStack {
+                        Spacer()
 
-                    Button(action: {
-                        withAnimation {
-                            showSearch.toggle()
-                            if !showSearch {
-                                searchText = ""
-                            }
+                        if showSearch {
+                            TextField("Search Investors", text: $searchText)
+                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                                .frame(maxWidth: .infinity)
+                                .padding(.horizontal, 12)
+                                .transition(.move(edge: .trailing).combined(with: .opacity))
+                                .animation(.easeInOut, value: showSearch)
                         }
-                    }) {
-                        Image(systemName: showSearch ? "xmark.circle.fill" : "magnifyingglass")
-                            .imageScale(.large)
-                            .padding(.trailing)
+
+                        Button(action: {
+                            withAnimation {
+                                showSearch.toggle()
+                                if !showSearch {
+                                    searchText = ""
+                                }
+                            }
+                        }) {
+                            Image(systemName: showSearch ? "xmark.circle.fill" : "magnifyingglass")
+                                .imageScale(.large)
+                                .padding(.trailing, 16)
+                        }
                     }
+                    .padding(.top, 48)
+                    .padding(.horizontal)
                 }
-                .padding(.top)
 
                 ScrollView {
                     VStack(spacing: 20) {
@@ -65,12 +76,12 @@ struct ProfileCardView: View {
                                                endPoint: .trailing)
                             )
                             .shadow(color: .black.opacity(0.3), radius: 2, x: 1, y: 1)
+                            .padding(.top)
 
                         ForEach(filteredProfiles, id: \.id) { profile in
                             ProfileCard(profile: profile)
                         }
                     }
-                    .padding(.top)
                 }
                 .background(
                     LinearGradient(colors: [Color.purple.opacity(0.25),
@@ -137,7 +148,6 @@ struct ProfileCard: View {
         .padding(.horizontal)
     }
 
-    // ✅ Fixed: Explicitly return an Image to allow use of .resizable()
     var profileImage: Image {
         if profile.name == "Sarah Kim" {
             return Image("sarah_kim")
