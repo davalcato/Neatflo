@@ -160,53 +160,53 @@ struct FeedView: View {
     }
     
     // MARK: - Profile View
-    struct ProfileView: View {
-        @Environment(\.dismiss) private var dismiss
-        
-        var body: some View {
-            if #available(iOS 16.0, *) {
-                NavigationStack {
-                    Form {
-                        Section {
-                            HStack {
-                                Spacer()
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .frame(width: 100, height: 100)
-                                    .foregroundColor(.blue)
-                                    .padding(.vertical)
-                                Spacer()
-                            }
-                        }
-                        
-                        Section("Account") {
-                            Text("Settings")
-                            Text("Notifications")
-                            Text("Privacy")
-                        }
-                        
-                        Section {
-                            Button("Sign Out", role: .destructive) {
-                                // Handle sign out
-                                dismiss()
-                            }
-                        }
-                    }
-                    .navigationTitle("Your Profile")
-                    .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .topBarTrailing) {
-                            Button("Done") {
-                                dismiss()
-                            }
-                        }
-                    }
-                }
-            } else {
-                // Fallback on earlier versions
-            }
-        }
-    }
+//    struct ProfileView: View {
+//        @Environment(\.dismiss) private var dismiss
+//        
+//        var body: some View {
+//            if #available(iOS 16.0, *) {
+//                NavigationStack {
+//                    Form {
+//                        Section {
+//                            HStack {
+//                                Spacer()
+//                                Image(systemName: "person.circle.fill")
+//                                    .resizable()
+//                                    .frame(width: 100, height: 100)
+//                                    .foregroundColor(.blue)
+//                                    .padding(.vertical)
+//                                Spacer()
+//                            }
+//                        }
+//                        
+//                        Section("Account") {
+//                            Text("Settings")
+//                            Text("Notifications")
+//                            Text("Privacy")
+//                        }
+//                        
+//                        Section {
+//                            Button("Sign Out", role: .destructive) {
+//                                // Handle sign out
+//                                dismiss()
+//                            }
+//                        }
+//                    }
+//                    .navigationTitle("Your Profile")
+//                    .navigationBarTitleDisplayMode(.inline)
+//                    .toolbar {
+//                        ToolbarItem(placement: .topBarTrailing) {
+//                            Button("Done") {
+//                                dismiss()
+//                            }
+//                        }
+//                    }
+//                }
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//        }
+//    }
     
     // MARK: - Preview
     #Preview {
