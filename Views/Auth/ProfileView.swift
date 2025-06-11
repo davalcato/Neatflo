@@ -16,8 +16,7 @@ struct ProfileView: View {
     @AppStorage("lastName") private var lastName: String = ""
     @AppStorage("profileImage") private var profileImageData: Data?
     @State private var selectedItem: PhotosPickerItem? = nil
-    @State private var animateImage = false
-    @State private var showSignOutConfirmation = false
+    @State private var showSignOutSheet = false
 
     var fullName: String {
         let f = firstName.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -28,139 +27,127 @@ struct ProfileView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                // Background
-                LinearGradient(colors: [Color.purple.opacity(0.2), Color.blue.opacity(0.2)],
+                // Animated Gradient Background
+                LinearGradient(colors: [.blue, .purple, .indigo],
                                startPoint: .topLeading,
                                endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
+                .ignoresSafeArea()
 
-                ScrollView {
-                    VStack(spacing: 20) {
-                        // Header
-                        ZStack {
-                            LinearGradient(colors: [Color.purple, Color.blue],
-                                           startPoint: .topLeading,
-                                           endPoint: .bottomTrailing)
-                                .frame(height: 220)
-                                .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                                .shadow(radius: 10)
+                VStack(spacing: 25) {
+                    Spacer(minLength: 40)
 
-                            VStack(spacing: 12) {
-                                // Profile Image
-                                Group {
-                                    if let imageData = profileImageData, let uiImage = UIImage(data: imageData) {
-                                        Image(uiImage: uiImage)
-                                            .resizable()
-                                            .aspectRatio(contentMode: .fill)
-                                            .frame(width: 120, height: 120)
-                                            .clipShape(Circle())
-                                            .shadow(radius: 10)
-                                            .scaleEffect(animateImage ? 1 : 0.8)
-                                            .animation(.easeOut(duration: 0.4), value: animateImage)
-                                    } else {
-                                        Image(systemName: "person.crop.circle.fill")
-                                            .resizable()
-                                            .scaledToFit()
-                                            .frame(width: 120, height: 120)
-                                            .foregroundColor(.white.opacity(0.8))
-                                            .scaleEffect(animateImage ? 1 : 0.8)
-                                            .animation(.easeOut(duration: 0.4), value: animateImage)
-                                    }
+                    // Profile Image Section
+                    ZStack {
+                        Circle()
+                            .fill(.ultraThinMaterial)
+                            .frame(width: 160, height: 160)
+                            .shadow(color: .black.opacity(0.2), radius: 10)
+
+                        if let data = profileImageData, let uiImage = UIImage(data: data) {
+                            Image(uiImage: uiImage)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 140, height: 140)
+                                .clipShape(Circle())
+                        } else {
+                            Image(systemName: "person.crop.circle.fill")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 120, height: 120)
+                                .foregroundColor(.white.opacity(0.9))
+                        }
+                    }
+
+                    PhotosPicker("Edit Photo", selection: $selectedItem, matching: .images)
+                        .foregroundColor(.white)
+                        .font(.caption)
+                        .padding(.top, -12)
+                        .onChange(of: selectedItem) { newItem in
+                            Task {
+                                if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                    profileImageData = data
                                 }
-
-                                // Name
-                                if !fullName.isEmpty {
-                                    Text(fullName)
-                                        .font(.title.bold())
-                                        .foregroundColor(.white)
-                                }
-
-                                PhotosPicker("Change Photo", selection: $selectedItem, matching: .images)
-                                    .foregroundColor(.white)
-                                    .font(.caption)
-                                    .padding(.top, 4)
-                                    .onChange(of: selectedItem) { newItem in
-                                        Task {
-                                            if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                                profileImageData = data
-                                            }
-                                        }
-                                    }
                             }
-                            .padding(.top, 40)
                         }
 
-                        // Form
-                        VStack(alignment: .leading, spacing: 20) {
-                            Text("Personal Info")
-                                .font(.title3.bold())
+                    // Full Name
+                    if !fullName.isEmpty {
+                        Text(fullName)
+                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .foregroundColor(.white)
+                            .transition(.opacity)
+                    }
 
+                    // Info Card
+                    VStack(spacing: 16) {
+                        Group {
+                            HStack {
+                                Text("First Name")
+                                    .foregroundColor(.white.opacity(0.7))
+                                Spacer()
+                            }
                             TextField("First Name", text: $firstName)
                                 .padding()
-                                .background(Color.white)
+                                .background(.ultraThinMaterial)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .shadow(radius: 3)
+                                .foregroundColor(.white)
 
+                            HStack {
+                                Text("Last Name")
+                                    .foregroundColor(.white.opacity(0.7))
+                                Spacer()
+                            }
                             TextField("Last Name", text: $lastName)
                                 .padding()
-                                .background(Color.white)
+                                .background(.ultraThinMaterial)
                                 .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .shadow(radius: 3)
-
-                            Divider()
-
-                            Text("Settings")
-                                .font(.title3.bold())
-
-                            VStack(spacing: 12) {
-                                NavigationLink("Notifications") {}
-                                NavigationLink("Privacy") {}
-                                NavigationLink("Terms of Use") {}
-                            }
-                            .padding(.horizontal)
+                                .foregroundColor(.white)
                         }
-                        .padding()
-                        .background(Color.white.opacity(0.9))
-                        .clipShape(RoundedRectangle(cornerRadius: 20))
-                        .padding(.horizontal)
 
-                        Spacer(minLength: 50)
+                        Divider().background(Color.white.opacity(0.4))
+
+                        VStack(spacing: 12) {
+                            NavigationLink(destination: Text("Notification Settings")) {
+                                Label("Notifications", systemImage: "bell.badge")
+                            }
+                            NavigationLink(destination: Text("Privacy Settings")) {
+                                Label("Privacy", systemImage: "lock.shield")
+                            }
+                        }
+                        .font(.body)
+                        .foregroundColor(.white)
                     }
-                }
+                    .padding()
+                    .background(.ultraThinMaterial)
+                    .clipShape(RoundedRectangle(cornerRadius: 20, style: .continuous))
+                    .shadow(radius: 10)
+                    .padding(.horizontal)
 
-                // Sign Out Floating Button
-                VStack {
                     Spacer()
+
+                    // Sign Out Button
                     Button {
-                        showSignOutConfirmation = true
+                        showSignOutSheet.toggle()
                     } label: {
                         Text("Sign Out")
                             .fontWeight(.bold)
-                            .padding()
                             .frame(maxWidth: .infinity)
-                            .background(LinearGradient(colors: [Color.red, Color.orange], startPoint: .leading, endPoint: .trailing))
-                            .foregroundColor(.white)
+                            .padding()
+                            .background(LinearGradient(colors: [.red, .orange], startPoint: .leading, endPoint: .trailing))
                             .clipShape(Capsule())
-                            .shadow(radius: 6)
+                            .foregroundColor(.white)
                     }
-                    .padding()
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 30)
                 }
-            }
-            .navigationTitle("Profile")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarTrailing) {
-                    Button("Done") {
-                        dismiss()
+                .transition(.move(edge: .bottom).combined(with: .opacity))
+                .navigationTitle("")
+                .navigationBarHidden(true)
+                .sheet(isPresented: $showSignOutSheet) {
+                    SignOutConfirmation {
+                        signOut()
                     }
                 }
-            }
-            .onAppear {
-                animateImage = true
-            }
-            .alert("Are you sure you want to sign out?", isPresented: $showSignOutConfirmation) {
-                Button("Sign Out", role: .destructive) { signOut() }
-                Button("Cancel", role: .cancel) {}
             }
         }
     }
@@ -169,16 +156,48 @@ struct ProfileView: View {
         firstName = ""
         lastName = ""
         profileImageData = nil
-        print("User signed out")
         dismiss()
     }
 }
 
-#Preview {
-    if #available(iOS 16.0, *) {
-        ProfileView()
-    } else {
-        Text("Update to iOS 16+")
+// SignOutConfirmation Bottom Sheet
+@available(iOS 16.0, *)
+struct SignOutConfirmation: View {
+    var onConfirm: () -> Void
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        VStack(spacing: 20) {
+            Capsule()
+                .frame(width: 40, height: 5)
+                .foregroundColor(.gray.opacity(0.3))
+                .padding(.top, 10)
+
+            Text("Are you sure you want to sign out?")
+                .font(.headline)
+                .multilineTextAlignment(.center)
+                .padding(.top)
+
+            Button("Sign Out", role: .destructive) {
+                onConfirm()
+                dismiss()
+            }
+            .padding()
+            .frame(maxWidth: .infinity)
+            .background(Color.red.opacity(0.8))
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .foregroundColor(.white)
+
+            Button("Cancel") {
+                dismiss()
+            }
+            .foregroundColor(.blue)
+
+            Spacer()
+        }
+        .padding()
+        .presentationDetents([.medium])
     }
 }
+
 
