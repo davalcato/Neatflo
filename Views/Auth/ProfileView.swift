@@ -18,70 +18,105 @@ struct ProfileView: View {
     @State private var selectedItem: PhotosPickerItem? = nil
 
     var body: some View {
-        if #available(iOS 16.0, *) {
-            NavigationStack {
-                Form {
-                    Section {
-                        HStack {
-                            Spacer()
-                            VStack {
+        NavigationStack {
+            ZStack {
+                LinearGradient(colors: [Color.purple.opacity(0.3), Color.blue.opacity(0.3), Color.pink.opacity(0.3)],
+                               startPoint: .topLeading,
+                               endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+
+                ScrollView {
+                    VStack(spacing: 30) {
+                        // Profile image with glow ring
+                        VStack(spacing: 12) {
+                            ZStack {
+                                Circle()
+                                    .stroke(
+                                        LinearGradient(colors: [.blue, .purple, .pink], startPoint: .topLeading, endPoint: .bottomTrailing),
+                                        lineWidth: 4
+                                    )
+                                    .frame(width: 120, height: 120)
+
                                 if let imageData = profileImageData, let uiImage = UIImage(data: imageData) {
                                     Image(uiImage: uiImage)
                                         .resizable()
                                         .aspectRatio(contentMode: .fill)
                                         .frame(width: 100, height: 100)
                                         .clipShape(Circle())
-                                        .shadow(radius: 5)
+                                        .shadow(radius: 8)
                                 } else {
                                     Image(systemName: "person.circle.fill")
                                         .resizable()
                                         .frame(width: 100, height: 100)
-                                        .foregroundColor(.blue)
-                                        .shadow(radius: 5)
+                                        .foregroundColor(.blue.opacity(0.6))
+                                        .shadow(radius: 8)
                                 }
+                            }
 
-                                PhotosPicker("Change Photo", selection: $selectedItem, matching: .images)
-                                    .onChange(of: selectedItem) { newItem in
-                                        Task {
-                                            if let data = try? await newItem?.loadTransferable(type: Data.self) {
-                                                profileImageData = data
-                                            }
+                            PhotosPicker("Change Photo", selection: $selectedItem, matching: .images)
+                                .font(.caption)
+                                .padding(8)
+                                .background(Color.white.opacity(0.2))
+                                .clipShape(Capsule())
+                                .foregroundColor(.white)
+                                .onChange(of: selectedItem) { newItem in
+                                    Task {
+                                        if let data = try? await newItem?.loadTransferable(type: Data.self) {
+                                            profileImageData = data
                                         }
                                     }
+                                }
+                        }
+
+                        // Info Card
+                        VStack(spacing: 16) {
+                            Group {
+                                TextField("First Name", text: $firstName)
+                                TextField("Last Name", text: $lastName)
                             }
-                            Spacer()
+                            .padding()
+                            .background(.ultraThinMaterial)
+                            .cornerRadius(12)
+                            .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.white.opacity(0.2)))
+
+                            NavigationLink("Settings") {}
+                                .profileLinkStyle()
+
+                            NavigationLink("Notifications") {}
+                                .profileLinkStyle()
+
+                            NavigationLink("Privacy") {}
+                                .profileLinkStyle()
                         }
-                    }
+                        .padding()
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(20)
+                        .padding(.horizontal)
 
-                    Section("Personal Info") {
-                        TextField("First Name", text: $firstName)
-                        TextField("Last Name", text: $lastName)
-                    }
-
-                    Section("Account") {
-                        NavigationLink("Settings") {}
-                        NavigationLink("Notifications") {}
-                        NavigationLink("Privacy") {}
-                    }
-
-                    Section {
-                        Button("Sign Out", role: .destructive) {
-                            signOut()
+                        // Sign Out
+                        Button(action: signOut) {
+                            Text("Sign Out")
+                                .font(.headline)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.red.opacity(0.8))
+                                .foregroundColor(.white)
+                                .cornerRadius(14)
                         }
+                        .padding(.horizontal)
                     }
+                    .padding(.vertical)
                 }
-                .navigationTitle("Your Profile")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button("Done") {
-                            dismiss()
-                        }
+            }
+            .navigationTitle("Your Profile")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button("Done") {
+                        dismiss()
                     }
                 }
             }
-        } else {
-            Text("Please update to iOS 16 or later to access Profile features.")
         }
     }
 
@@ -92,11 +127,25 @@ struct ProfileView: View {
     }
 }
 
+// MARK: - View Modifier for Buttons
+@available(iOS 16.0, *)
+extension View {
+    func profileLinkStyle() -> some View {
+        self
+            .font(.headline)
+            .foregroundColor(.white)
+            .frame(maxWidth: .infinity)
+            .padding()
+            .background(Color.blue.opacity(0.6))
+            .cornerRadius(12)
+    }
+}
 
 #Preview {
     if #available(iOS 16.0, *) {
         ProfileView()
     } else {
-        // Fallback on earlier versions
+        Text("Update to iOS 16+")
     }
 }
+
