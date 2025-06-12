@@ -7,9 +7,8 @@
 
 import SwiftUI
 
-import SwiftUI
 
-struct BlurView: UIViewRepresentable {
+struct CustomBlurView: UIViewRepresentable {
     var style: UIBlurEffect.Style = .systemMaterial
 
     func makeUIView(context: Context) -> UIVisualEffectView {
@@ -19,7 +18,7 @@ struct BlurView: UIViewRepresentable {
     func updateUIView(_ uiView: UIVisualEffectView, context: Context) {}
 }
 
-
 #Preview {
-    BlurView()
+    BlurView(style: .systemMaterial)
+        .frame(width: 300, height: 200)
 }

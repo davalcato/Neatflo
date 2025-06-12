@@ -5,6 +5,7 @@
 //  Created by Ethan Hunt on 4/26/25.
 //
 
+// FeedViewModel.swift
 import SwiftUI
 import SwiftData
 
@@ -14,52 +15,51 @@ final class FeedViewModel: ObservableObject {
     @Published var opportunities: [Opportunity] = []
     @Published var isLoading = false
     @Published var errorMessage: String?
-    
+
     private let modelContext: ModelContext
-    
+
     init(modelContext: ModelContext) {
         self.modelContext = modelContext
         Task {
             await loadOpportunities()
         }
     }
-    
+
     func loadOpportunities() async {
         isLoading = true
         do {
             let descriptor = FetchDescriptor<Opportunity>(
-                sortBy: [SortDescriptor(\.timestamp, order: .reverse)]
+                sortBy: [SortDescriptor(\Opportunity.timestamp, order: .reverse)]
             )
             opportunities = try modelContext.fetch(descriptor)
-            
+
             if opportunities.isEmpty {
                 await seedSampleData()
                 opportunities = try modelContext.fetch(descriptor)
             }
-            
+
             isLoading = false
         } catch {
             errorMessage = "Failed to load opportunities"
             isLoading = false
         }
     }
-    
+
     func refresh() async {
         await loadOpportunities()
     }
-    
-    @available(iOS 17, *)
+
     private func seedSampleData() async {
         let sampleProfile = Profile(
             name: "Alex Johnson",
             title: "Angel Investor",
             company: "Neatflo Network",
-            photo: "alex", // ensure this image asset exists
+            photo: "alex",
             raised: "$5M",
             role: "Investor",
             bio: "Focuses on early-stage startups in tech and health sectors."
         )
-        
+
         let sampleOpportunities = [
             Opportunity(
                 title: "Investor Introduction",
@@ -80,10 +80,12 @@ final class FeedViewModel: ObservableObject {
                 profile: sampleProfile
             )
         ]
-        
+
         sampleOpportunities.forEach { modelContext.insert($0) }
         try? modelContext.save()
     }
-    
 }
+
+
+
 

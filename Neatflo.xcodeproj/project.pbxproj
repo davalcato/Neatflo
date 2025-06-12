@@ -32,6 +32,7 @@
 		DA5D3CA22DDBA81100404BA7 /* MainContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */; };
 		DA5D3CA42DDBA97500404BA7 /* DataStorageModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */; };
 		DA5D3CA62DDBC31600404BA7 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */; };
+		DA6443B02DFA3F24009B5E7B /* OpportunityTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6443AF2DFA3F24009B5E7B /* OpportunityTagsView.swift */; };
 		DA6498EA2DDCD39E009861EB /* SwipeableCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */; };
 		DA6498F72DDCFC73009861EB /* OpportunityDeckView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498F42DDCFC73009861EB /* OpportunityDeckView.swift */; };
 		DA6498F82DDCFC73009861EB /* OpportunitiesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498F22DDCFC73009861EB /* OpportunitiesViewModel.swift */; };
@@ -40,6 +41,7 @@
 		DA6498FC2DDD006A009861EB /* OpportunitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */; };
 		DA6498FE2DDD09B9009861EB /* ProfileCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498FD2DDD09B9009861EB /* ProfileCardViewModel.swift */; };
 		DA6499002DDD69B8009861EB /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6498FF2DDD69B8009861EB /* ProfileCardView.swift */; };
+		DA701BD12DFA40F600FD1BDC /* TagDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA701BD02DFA40F600FD1BDC /* TagDetailView.swift */; };
 		DA7D897B2DD11F7200EE5B88 /* OpportunityMO.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */; };
 		DA7D897D2DD123A900EE5B88 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7D897C2DD123A900EE5B88 /* ContentView.swift */; };
 		DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */; };
@@ -108,6 +110,7 @@
 		DA5D3CA12DDBA81100404BA7 /* MainContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainContentView.swift; sourceTree = "<group>"; };
 		DA5D3CA32DDBA97500404BA7 /* DataStorageModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageModifier.swift; sourceTree = "<group>"; };
 		DA5D3CA52DDBC31600404BA7 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		DA6443AF2DFA3F24009B5E7B /* OpportunityTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityTagsView.swift; sourceTree = "<group>"; };
 		DA6498E92DDCD39E009861EB /* SwipeableCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeableCardView.swift; sourceTree = "<group>"; };
 		DA6498F22DDCFC73009861EB /* OpportunitiesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesViewModel.swift; sourceTree = "<group>"; };
 		DA6498F32DDCFC73009861EB /* OpportunityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityCard.swift; sourceTree = "<group>"; };
@@ -116,6 +119,7 @@
 		DA6498FB2DDD006A009861EB /* OpportunitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunitiesView.swift; sourceTree = "<group>"; };
 		DA6498FD2DDD09B9009861EB /* ProfileCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardViewModel.swift; sourceTree = "<group>"; };
 		DA6498FF2DDD69B8009861EB /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
+		DA701BD02DFA40F600FD1BDC /* TagDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDetailView.swift; sourceTree = "<group>"; };
 		DA7D897A2DD11F7200EE5B88 /* OpportunityMO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpportunityMO.swift; sourceTree = "<group>"; };
 		DA7D897C2DD123A900EE5B88 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA7DAF1F2DBEAA92000940B9 /* NeatfloApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NeatfloApp.swift; sourceTree = "<group>"; };
@@ -196,6 +200,7 @@
 		DA4524FA2DBD910C001AFE0D = {
 			isa = PBXGroup;
 			children = (
+				DA701BD02DFA40F600FD1BDC /* TagDetailView.swift */,
 				DA45254E2DBDAEA3001AFE0D /* Models */,
 				DA4525502DBDAEA3001AFE0D /* Services */,
 				DA4525532DBDAEA3001AFE0D /* ViewModel */,
@@ -334,6 +339,7 @@
 				DA572D142DEAC95400371EFA /* ErrorView.swift */,
 				DA7E74A22DF155E500F92627 /* CompletionView.swift */,
 				DAA38C092DF4CFFA00F1B4C5 /* TagButton.swift */,
+				DA6443AF2DFA3F24009B5E7B /* OpportunityTagsView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -524,6 +530,7 @@
 				DA45255D2DBDAEA3001AFE0D /* LoginView.swift in Sources */,
 				DA572D132DEAC8EC00371EFA /* BlurView.swift in Sources */,
 				DA6498F72DDCFC73009861EB /* OpportunityDeckView.swift in Sources */,
+				DA6443B02DFA3F24009B5E7B /* OpportunityTagsView.swift in Sources */,
 				DA572D172DEAD06B00371EFA /* SimpleProfileView.swift in Sources */,
 				DA6498F82DDCFC73009861EB /* OpportunitiesViewModel.swift in Sources */,
 				DA6498F92DDCFC73009861EB /* OpportunityFeedView.swift in Sources */,
@@ -547,6 +554,7 @@
 				DAA5A6E12DBDB8BF00AD57E4 /* Opportunity.swift in Sources */,
 				DA4525612DBDAEA3001AFE0D /* FeedView.swift in Sources */,
 				DA6498EA2DDCD39E009861EB /* SwipeableCardView.swift in Sources */,
+				DA701BD12DFA40F600FD1BDC /* TagDetailView.swift in Sources */,
 				DAB0B3132DEC00D900A2A638 /* OpportunityFeedView_Previews.swift in Sources */,
 				DA3E93492DC86DE5004BA2BB /* MockDataService.swift in Sources */,
 				DA7DAF202DBEAA92000940B9 /* NeatfloApp.swift in Sources */,

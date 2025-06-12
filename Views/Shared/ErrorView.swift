@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ErrorView: View {
+struct SimpleErrorView: View {
     let error: String
     let onDismiss: () -> Void
 

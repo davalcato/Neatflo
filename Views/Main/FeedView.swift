@@ -19,7 +19,8 @@ struct FeedView: View {
     @State private var showingProfile = false
     @State private var navigateToSwipeView = false
     @State private var selectedOpportunity: Opportunity?
-    
+    @State private var selectedTag: String?
+
     init() {
         let context = ModelContext(Persistence.shared.container)
         _viewModel = StateObject(wrappedValue: FeedViewModel(modelContext: context))
@@ -72,24 +73,39 @@ struct FeedView: View {
                     SwipeableProfileView(profiles: profileVM.coFounderProfiles)
                 }
             }
+            .navigationDestination(isPresented: Binding(
+                get: { selectedTag != nil },
+                set: { if !$0 { selectedTag = nil } }
+            )) {
+                if let tag = selectedTag {
+                    TagDetailView(tag: tag)
+                }
+            }
         }
     }
-    
+
     // 🎴 Animated and styled Opportunity List
     private var opportunityList: some View {
         ScrollView {
             LazyVStack(spacing: 25) {
                 ForEach(viewModel.opportunities, id: \.id) { opportunity in
-                    OpportunityCard(opportunity: opportunity) {
-                        // Action for View Details
-                        Group {
-                            if opportunity.title == "Investor Introduction" {
-                                ProfileCardView(profiles: profileVM.investorProfiles)
-                            } else if opportunity.title == "Co-Founder Match" {
-                                SwipeableProfileView(profiles: profileVM.coFounderProfiles)
-                            } else {
-                                Text("Details not available")
+                    VStack(spacing: 12) {
+                        OpportunityCard(opportunity: opportunity) {
+                            // Action for View Details
+                            Group {
+                                if opportunity.title == "Investor Introduction" {
+                                    ProfileCardView(profiles: profileVM.investorProfiles)
+                                } else if opportunity.title == "Co-Founder Match" {
+                                    SwipeableProfileView(profiles: profileVM.coFounderProfiles)
+                                } else {
+                                    Text("Details not available")
+                                }
                             }
+                        }
+
+                        // 👇 Functional tags
+                        OpportunityTagsView(tags: opportunity.tags) { tag in
+                            selectedTag = tag
                         }
                     }
                     .padding()
@@ -110,6 +126,8 @@ struct FeedView: View {
             .padding(.vertical)
         }
     }
+}
+
     
     
     // MARK: - Optional Blur Background Helper
@@ -158,55 +176,6 @@ struct FeedView: View {
             .zIndex(1)
         }
     }
-    
-    // MARK: - Profile View
-//    struct ProfileView: View {
-//        @Environment(\.dismiss) private var dismiss
-//        
-//        var body: some View {
-//            if #available(iOS 16.0, *) {
-//                NavigationStack {
-//                    Form {
-//                        Section {
-//                            HStack {
-//                                Spacer()
-//                                Image(systemName: "person.circle.fill")
-//                                    .resizable()
-//                                    .frame(width: 100, height: 100)
-//                                    .foregroundColor(.blue)
-//                                    .padding(.vertical)
-//                                Spacer()
-//                            }
-//                        }
-//                        
-//                        Section("Account") {
-//                            Text("Settings")
-//                            Text("Notifications")
-//                            Text("Privacy")
-//                        }
-//                        
-//                        Section {
-//                            Button("Sign Out", role: .destructive) {
-//                                // Handle sign out
-//                                dismiss()
-//                            }
-//                        }
-//                    }
-//                    .navigationTitle("Your Profile")
-//                    .navigationBarTitleDisplayMode(.inline)
-//                    .toolbar {
-//                        ToolbarItem(placement: .topBarTrailing) {
-//                            Button("Done") {
-//                                dismiss()
-//                            }
-//                        }
-//                    }
-//                }
-//            } else {
-//                // Fallback on earlier versions
-//            }
-//        }
-//    }
     
     // MARK: - Preview
     #Preview {
@@ -257,7 +226,7 @@ struct FeedView: View {
             }
         }
     }
-}
+
     
     
 
